@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
 
 
-    public static final RegistryObject<Block> COOKBOT_BLOCK = registerWithItem("cookbot_block", () -> new CookBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BROWN).strength(0,0).harvestLevel(0).sound(SoundType.LANTERN)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
+    public static final RegistryObject<Block> COOKBOT_BLOCK = registerWithItem("cookbot_block", () -> new CookBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
     public static final RegistryObject<TileEntityType<CookBotTileEntity>> COOKBOT_TILE = Registration.TILE_ENTITY_TYPES.register("cookbot_tile", () -> TileEntityType.Builder.of(CookBotTileEntity::new, COOKBOT_BLOCK.get()).build(null));
 
     public static void register(){}

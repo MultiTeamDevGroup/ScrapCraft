@@ -5,7 +5,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.math.AxisAlignedBB;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -20,8 +19,8 @@ public class CookBotTileEntity extends TileEntity implements IAnimatable {
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private <E extends TileEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        event.getController().transitionLengthTicks = 0;
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("anim.name", true));
+        //event.getController().transitionLengthTicks = 0;
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_2", true));
         return PlayState.CONTINUE;
     }
 

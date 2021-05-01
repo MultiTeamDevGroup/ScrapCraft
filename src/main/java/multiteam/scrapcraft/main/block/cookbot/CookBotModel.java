@@ -36,9 +36,4 @@ public class CookBotModel extends AnimatedGeoModel implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
-
-    @Override
-    public void setLivingAnimations(Object o, Integer integer, AnimationEvent animationEvent) {
-
-    }
 }
