@@ -1,9 +1,20 @@
 package multiteam.scrapcraft;
 
+import multiteam.multicore_lib.setup.utilities.ItemGroupTool;
+import multiteam.scrapcraft.main.Registration;
+import multiteam.scrapcraft.main.block.ModBlocks;
+import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,9 +32,12 @@ public class ScrapCraft
     public static final String MOD_ID = "scrapcraft";
     private static final Logger LOGGER = LogManager.getLogger();
 
+    public static final ItemGroupTool SCRAPCRAFT_MACHINES = new ItemGroupTool("scrapcraft_machines", () -> new ItemStack(Items.APPLE));
+
     public ScrapCraft() {
 
         GeckoLib.initialize();
+        Registration.register();
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
@@ -38,7 +52,8 @@ public class ScrapCraft
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-
+        ClientRegistry.bindTileEntityRenderer(ModBlocks.COOKBOT_TILE.get(), CookBotRenderer::new);
+        RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
