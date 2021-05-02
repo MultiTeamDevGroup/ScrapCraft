@@ -1,6 +1,13 @@
 {
+    "BLOCKS":"MOD BLOCKS",
+    "block.scrapcraft.cookbot_block":"Cook Bot",
+
+    "ITEMS":"MOD ITEMS",
+    "item.scrapcraft.sledge_hammer":"Sledge Hammer",
+
+    "MISC":"MOD MISC",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",
-
-    "block.scrapcraft.cookbot_block":"Cook Bot"
-
+    "itemGroup.scrapcraft_tools": "ScrapCraft - Tools",
+    "itemGroup.scrapcraft_items": "ScrapCraft - Items",
+    "itemGroup.scrapcraft_blocks": "ScrapCraft - Blocks"
 }

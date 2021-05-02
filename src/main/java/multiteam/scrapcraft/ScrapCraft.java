@@ -4,7 +4,9 @@ import multiteam.multicore_lib.setup.utilities.ItemGroupTool;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
+import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
@@ -33,6 +35,9 @@ public class ScrapCraft
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static final ItemGroupTool SCRAPCRAFT_MACHINES = new ItemGroupTool("scrapcraft_machines", () -> new ItemStack(ModBlocks.COOKBOT_BLOCK.get().asItem()));
+    public static final ItemGroupTool SCRAPCRAFT_TOOLS = new ItemGroupTool("scrapcraft_tools", () -> new ItemStack(ModItems.HAMMER.get()));
+    public static final ItemGroupTool SCRAPCRAFT_BLOCKS = new ItemGroupTool("scrapcraft_blocks", () -> new ItemStack(Blocks.STONE.asItem()));
+    public static final ItemGroupTool SCRAPCRAFT_ITEMS = new ItemGroupTool("scrapcraft_items", () -> new ItemStack(Items.STICK));
 
     public ScrapCraft() {
 

@@ -2,6 +2,7 @@ package multiteam.scrapcraft.main;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
+import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
@@ -22,5 +23,6 @@ public class Registration {
         TILE_ENTITY_TYPES.register(modeEventBus);
 
         ModBlocks.register();
+        ModItems.register();
     }
 }
