@@ -32,7 +32,7 @@ public class ScrapCraft
     public static final String MOD_ID = "scrapcraft";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final ItemGroupTool SCRAPCRAFT_MACHINES = new ItemGroupTool("scrapcraft_machines", () -> new ItemStack(Items.APPLE));
+    public static final ItemGroupTool SCRAPCRAFT_MACHINES = new ItemGroupTool("scrapcraft_machines", () -> new ItemStack(ModBlocks.COOKBOT_BLOCK.get().asItem()));
 
     public ScrapCraft() {
 
