@@ -27,9 +27,11 @@ public class CookBotTileEntity extends TileEntity implements IAnimatable {
         if(event.getController().getAnimationState() == AnimationState.Stopped){
             int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
             if(!this.isCooking){
-                if(randomChance < 33){
+                if(randomChance < 20){
+                    return PlayState.CONTINUE;
+                }else if(randomChance >= 20 && randomChance < 50){
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_1", false));
-                }else if(randomChance >= 33 && randomChance < 66){
+                }else if(randomChance >= 50 && randomChance < 75){
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_2", false));
                 }else{
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_3", false));
