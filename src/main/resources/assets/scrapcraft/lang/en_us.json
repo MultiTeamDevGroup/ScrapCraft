@@ -1,9 +1,21 @@
 {
-    "BLOCKS":"MOD BLOCKS",
+    "MACHINES":"MOD MACHINES",
     "block.scrapcraft.cookbot_block":"Cook Bot",
+
+    "BLOCKS":"MOD BLOCKS",
+    "block.scrapcraft.metal_1":"Metal Block 1",
+    "block.scrapcraft.metal_2":"Metal Block 2",
+    "block.scrapcraft.metal_3":"Metal Block 3",
+    "block.scrapcraft.concrete_1":"Concrete Block 1",
+    "block.scrapcraft.concrete_2":"Concrete Block 2",
+    "block.scrapcraft.concrete_3":"Concrete Block 3",
+    "block.scrapcraft.punched_steel":"Punched Steel",
+    "block.scrapcraft.square_mesh":"Square Mesh Block",
+    "block.scrapcraft.insulation":"Insulation Block",
 
     "ITEMS":"MOD ITEMS",
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
+    "item.scrapcraft.glue":"Glue",
 
     "MISC":"MOD MISC",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",

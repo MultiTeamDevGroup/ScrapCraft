@@ -1,0 +1,133 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "scrapcraft:item/glue",
+		"particle": "scrapcraft:item/glue"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 4],
+			"to": [13, 8, 12],
+			"faces": {
+				"north": {"uv": [0, 0, 5, 4], "texture": "#0"},
+				"east": {"uv": [1, 4, 5, 8], "texture": "#0"},
+				"south": {"uv": [0, 4, 5, 8], "texture": "#0"},
+				"west": {"uv": [1, 4, 5, 8], "texture": "#0"},
+				"up": {"uv": [0, 4, 5, 8], "texture": "#0"},
+				"down": {"uv": [0, 4, 5, 8], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 8, 4],
+			"to": [12, 10, 12],
+			"faces": {
+				"north": {"uv": [5, 0, 9, 1], "texture": "#0"},
+				"east": {"uv": [5, 0, 9, 1], "texture": "#0"},
+				"south": {"uv": [5, 0, 9, 1], "texture": "#0"},
+				"west": {"uv": [5, 0, 9, 1], "texture": "#0"},
+				"up": {"uv": [9, 5, 5, 1], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, 10, 7],
+			"to": [9, 17, 9],
+			"faces": {
+				"north": {"uv": [9, 1, 10, 4.5], "texture": "#0"},
+				"east": {"uv": [9, 1, 10, 4.5], "texture": "#0"},
+				"south": {"uv": [9, 1, 10, 4.5], "texture": "#0"},
+				"west": {"uv": [9, 0.5, 10, 4], "texture": "#0"},
+				"up": {"uv": [10, 4, 9, 3], "texture": "#0"},
+				"down": {"uv": [10, 2.5, 9, 3.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 15.68297, 7],
+			"to": [11, 16.68297, 9],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [9, 15.68297, 7]},
+			"faces": {
+				"north": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"east": {"uv": [9, 3, 10, 3.5], "texture": "#0"},
+				"south": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"west": {"uv": [9, 3, 10, 3.5], "texture": "#0"},
+				"up": {"uv": [10, 3.5, 8.5, 2.5], "texture": "#0"},
+				"down": {"uv": [10, 2.5, 8.5, 3.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8, 10, 7],
+			"to": [11, 11, 9],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [9, 11, 7]},
+			"faces": {
+				"north": {"uv": [9, 3, 10.5, 3.5], "texture": "#0"},
+				"east": {"uv": [9.5, 2.5, 10.5, 3], "texture": "#0"},
+				"south": {"uv": [9, 3, 10.5, 3.5], "texture": "#0"},
+				"west": {"uv": [9.5, 2.5, 10.5, 3], "texture": "#0"},
+				"up": {"uv": [10.5, 3.5, 9, 2.5], "texture": "#0"},
+				"down": {"uv": [10.5, 2.5, 9, 3.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6, 17, 6.75],
+			"to": [9, 18, 9.25],
+			"faces": {
+				"north": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"east": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"south": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"west": {"uv": [8.5, 3, 10, 3.5], "texture": "#0"},
+				"up": {"uv": [10.5, 3.5, 9, 2], "texture": "#0"},
+				"down": {"uv": [10.5, 2.5, 9, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [10.23044, 10.84149, 7],
+			"to": [11.23044, 15.84149, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [-0.01956, -0.15851, 0]},
+			"faces": {
+				"north": {"uv": [9.5, 1.5, 10, 4], "texture": "#0"},
+				"east": {"uv": [9.5, 1, 10.5, 3.5], "texture": "#0"},
+				"south": {"uv": [9.5, 1, 10, 3.5], "texture": "#0"},
+				"west": {"uv": [9.5, 1.5, 10.5, 4], "texture": "#0"},
+				"up": {"uv": [10, 3, 9.5, 2], "texture": "#0"},
+				"down": {"uv": [10.5, 2, 10, 3], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 133.5, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 133.5, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, -0.25, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"head": {
+			"translation": [0, 14.25, 0]
+		},
+		"fixed": {
+			"translation": [0, -0.5, 0]
+		}
+	}
+}

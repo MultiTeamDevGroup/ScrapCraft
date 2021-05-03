@@ -36,8 +36,8 @@ public class ScrapCraft
 
     public static final ItemGroupTool SCRAPCRAFT_MACHINES = new ItemGroupTool("scrapcraft_machines", () -> new ItemStack(ModBlocks.COOKBOT_BLOCK.get().asItem()));
     public static final ItemGroupTool SCRAPCRAFT_TOOLS = new ItemGroupTool("scrapcraft_tools", () -> new ItemStack(ModItems.HAMMER.get()));
-    public static final ItemGroupTool SCRAPCRAFT_BLOCKS = new ItemGroupTool("scrapcraft_blocks", () -> new ItemStack(Blocks.STONE.asItem()));
-    public static final ItemGroupTool SCRAPCRAFT_ITEMS = new ItemGroupTool("scrapcraft_items", () -> new ItemStack(Items.STICK));
+    public static final ItemGroupTool SCRAPCRAFT_BLOCKS = new ItemGroupTool("scrapcraft_blocks", () -> new ItemStack(ModBlocks.INSULATION.get().asItem()));
+    public static final ItemGroupTool SCRAPCRAFT_ITEMS = new ItemGroupTool("scrapcraft_items", () -> new ItemStack(ModItems.GLUE.get()));
 
     public ScrapCraft() {
 
@@ -58,7 +58,10 @@ public class ScrapCraft
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         ClientRegistry.bindTileEntityRenderer(ModBlocks.COOKBOT_TILE.get(), CookBotRenderer::new);
+
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.SQUARE_MESH.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.PUNCHED_STEEL.get(), RenderType.cutoutMipped());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
