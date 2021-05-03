@@ -17,9 +17,10 @@
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
     "item.scrapcraft.glue":"Glue",
 
-    "MISC":"MOD MISC",
+    "GUI":"MOD GUI",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",
     "itemGroup.scrapcraft_tools": "ScrapCraft - Tools",
     "itemGroup.scrapcraft_items": "ScrapCraft - Items",
-    "itemGroup.scrapcraft_blocks": "ScrapCraft - Blocks"
+    "itemGroup.scrapcraft_blocks": "ScrapCraft - Blocks",
+    "container.scrapcraft.cookbot":"COOK BOT"
 }

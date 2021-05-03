@@ -4,9 +4,13 @@ import multiteam.multicore_lib.setup.utilities.ItemGroupTool;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
+import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
+import multiteam.scrapcraft.main.container.CookBotScreen;
+import multiteam.scrapcraft.main.container.ModContainers;
 import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemStack;
@@ -57,9 +61,14 @@ public class ScrapCraft
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
+
+        ScreenManager.register(ModContainers.COOKBOT_CONTAINER_TYPE.get(), CookBotScreen::new);
+
         ClientRegistry.bindTileEntityRenderer(ModBlocks.COOKBOT_TILE.get(), CookBotRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModBlocks.OBSERVERBOT_TILE.get(), ObserverBotRenderer::new);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.OBSERVERBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.SQUARE_MESH.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.PUNCHED_STEEL.get(), RenderType.cutoutMipped());
     }

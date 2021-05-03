@@ -1,10 +1,20 @@
 package multiteam.scrapcraft.main.block.cookbot;
 
+import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
+import multiteam.scrapcraft.main.container.CookBotContainer;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -16,8 +26,10 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+public class CookBotTileEntity extends LockableLootTileEntity implements IAnimatable {
 
-public class CookBotTileEntity extends TileEntity implements IAnimatable {
+    public static int slots = 4;
+    protected NonNullList<ItemStack> items = NonNullList.withSize(slots, ItemStack.EMPTY);
 
     private boolean isCooking = false;
     private final AnimationFactory factory = new AnimationFactory(this);
@@ -64,6 +76,10 @@ public class CookBotTileEntity extends TileEntity implements IAnimatable {
         super.load(state, nbt);
 
         this.isCooking = nbt.getBoolean("isCooking");
+        this.items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+        if(!this.tryLoadLootTable(nbt)){
+            ItemStackHelper.loadAllItems(nbt, this.items);
+        }
 
     }
 
@@ -72,8 +88,36 @@ public class CookBotTileEntity extends TileEntity implements IAnimatable {
         super.save(nbt);
 
         nbt.putBoolean("isCooking", this.isCooking);
+        if(!this.trySaveLootTable(nbt)){
+            ItemStackHelper.saveAllItems(nbt, this.items);
+        }
 
         return nbt;
+    }
+
+    @Override
+    public ITextComponent getDefaultName() {
+        return new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot");
+    }
+
+    @Override
+    protected Container createMenu(int id, PlayerInventory playerInventory) {
+        return new CookBotContainer(id, playerInventory, this);
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.items;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> itemsIn) {
+        this.items = itemsIn;
+    }
+
+    @Override
+    public int getContainerSize() {
+        return this.slots;
     }
 
     /**@Override

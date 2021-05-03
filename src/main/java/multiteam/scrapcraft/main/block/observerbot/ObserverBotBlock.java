@@ -1,38 +1,37 @@
-package multiteam.scrapcraft.main.block.cookbot;
+package multiteam.scrapcraft.main.block.observerbot;
 
 import multiteam.scrapcraft.main.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
-public class CookBotBlock extends Block {
+public class ObserverBotBlock extends Block {
 
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
 
-    private static final VoxelShape SHAPE_FEET = Block.box(1.0D, 0.0D, 5.0D, 12.0D, 4.0D, 14.0D);
-    private static final VoxelShape SHAPE_BODY = Block.box(0.0D, 4.0D, 4.0D, 13.0D, 16.0D, 14.0D);
-    private static final VoxelShape SHAPE = VoxelShapes.or(SHAPE_BODY, SHAPE_FEET);
+    private static final VoxelShape SHAPE_BOTTOM1 = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 2.0D, 14.0D);
+    private static final VoxelShape SHAPE_BOTTOM2 = Block.box(3.0D, 2.0D, 3.0D, 13.0D, 3.0D, 13.0D);
+    private static final VoxelShape SHAPE_BOTTOM3 = Block.box(5.0D, 3.0D, 5.0D, 11.0D, 5.0D, 11.0D);
+    private static final VoxelShape SHAPE_BOTTOM4 = Block.box(6.0D, 5.0D, 6.0D, 10.0D, 11.0D, 10.0D);
+    private static final VoxelShape SHAPE = VoxelShapes.or(SHAPE_BOTTOM1, SHAPE_BOTTOM2, SHAPE_BOTTOM3, SHAPE_BOTTOM4);
 
 
-    public CookBotBlock(Properties properties) {
+    public ObserverBotBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
     }
@@ -45,7 +44,7 @@ public class CookBotBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return ModBlocks.COOKBOT_TILE.get().create();
+        return ModBlocks.OBSERVERBOT_TILE.get().create();
     }
 
     @Override
@@ -86,15 +85,5 @@ public class CookBotBlock extends Block {
         builder.add(FACING);
     }
 
-    @Override
-    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult hitResult) {
-        if(!worldIn.isClientSide){
-            TileEntity cookbot = worldIn.getBlockEntity(pos);
-            if(cookbot instanceof CookBotTileEntity){
-                NetworkHooks.openGui(((ServerPlayerEntity) playerEntity), (CookBotTileEntity)cookbot, pos);
-            }
-        }
 
-        return super.use(state, worldIn, pos, playerEntity, hand, hitResult);
-    }
 }
