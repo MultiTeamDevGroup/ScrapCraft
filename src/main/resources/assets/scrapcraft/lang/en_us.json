@@ -1,6 +1,7 @@
 {
     "MACHINES":"MOD MACHINES",
     "block.scrapcraft.cookbot_block":"Cook Bot",
+    "block.scrapcraft.observerbot_block":"Observer Bot",
 
     "BLOCKS":"MOD BLOCKS",
     "block.scrapcraft.metal_1":"Metal Block 1",
@@ -16,11 +17,17 @@
     "ITEMS":"MOD ITEMS",
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
     "item.scrapcraft.glue":"Glue",
+    "item.scrapcraft.pizza_burger":"Pizza Burger",
+    "item.scrapcraft.veggie_burger":"Veggie Burger",
+    "item.scrapcraft.revival_baguette":"Revival Baguette",
 
     "GUI":"MOD GUI",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",
     "itemGroup.scrapcraft_tools": "ScrapCraft - Tools",
     "itemGroup.scrapcraft_items": "ScrapCraft - Items",
     "itemGroup.scrapcraft_blocks": "ScrapCraft - Blocks",
-    "container.scrapcraft.cookbot":"COOK BOT"
+    "container.scrapcraft.cookbot":"COOK BOT",
+    "container.scrapcraft.cookbot.pizza_burger_name":"PIZZA BURGER",
+    "container.scrapcraft.cookbot.veggie_burger_name":"VEGGIE BURGER",
+    "container.scrapcraft.cookbot.revival_baguette_name":"REVIVAL BAGUETTE"
 }

@@ -24,7 +24,6 @@ public class CookBotContainer extends Container {
         this.cookbot = tileE;
         this.canInteractWithCallable = IWorldPosCallable.create(tileE.getLevel(), tileE.getBlockPos());
 
-
     }
 
     public CookBotContainer(final int windowid, final PlayerInventory playerInventory, final PacketBuffer data){
@@ -67,4 +66,5 @@ public class CookBotContainer extends Container {
         }
         return stack;
     }
+
 }

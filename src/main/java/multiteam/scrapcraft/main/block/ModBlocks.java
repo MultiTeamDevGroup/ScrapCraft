@@ -25,8 +25,8 @@ public class ModBlocks {
     //Machines
     public static final RegistryObject<Block> COOKBOT_BLOCK = registerWithItem("cookbot_block", () -> new CookBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
     public static final RegistryObject<TileEntityType<CookBotTileEntity>> COOKBOT_TILE = Registration.TILE_ENTITY_TYPES.register("cookbot_tile", () -> TileEntityType.Builder.of(CookBotTileEntity::new, COOKBOT_BLOCK.get()).build(null));
-    public static final RegistryObject<Block> OBSERVERBOT_BLOCK = registerWithItem("observer_block", () -> new ObserverBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
-    public static final RegistryObject<TileEntityType<ObserverBotTileEntity>> OBSERVERBOT_TILE = Registration.TILE_ENTITY_TYPES.register("observer_tile", () -> TileEntityType.Builder.of(ObserverBotTileEntity::new, OBSERVERBOT_BLOCK.get()).build(null));
+    public static final RegistryObject<Block> OBSERVERBOT_BLOCK = registerWithItem("observerbot_block", () -> new ObserverBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
+    public static final RegistryObject<TileEntityType<ObserverBotTileEntity>> OBSERVERBOT_TILE = Registration.TILE_ENTITY_TYPES.register("observerbot_tile", () -> TileEntityType.Builder.of(ObserverBotTileEntity::new, OBSERVERBOT_BLOCK.get()).build(null));
 
     //Blocks
     public static final RegistryObject<Block> METAL_1 = registerWithItem("metal_1", () -> new Block(AbstractBlock.Properties.of(Material.METAL).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
