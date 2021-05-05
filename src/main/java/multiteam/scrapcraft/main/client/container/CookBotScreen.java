@@ -1,18 +1,20 @@
-package multiteam.scrapcraft.main.container;
+package multiteam.scrapcraft.main.client.container;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
+import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ColorHelper;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.util.math.vector.Vector4f;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,6 +37,13 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public int pizzaBurgerTime = 260; //In ticks; real time: 00:13
     public int veggieBurgerTime = 260; //In ticks; real time: 00:13
     public int revivalBaguetteTime = 540; //In ticks; real time: 00:13
+    public ItemStack[] pizzaBurgerRecipe = {new ItemStack(ModItems.WOC_MEAT.get()), new ItemStack(Items.MILK_BUCKET), new ItemStack(Items.POTATO), new ItemStack(ModItems.TOMATO.get())};
+    public int[] pizzaBurgerRecipeCounts = {1,2,2,1};
+    public ItemStack[] veggieBurgerRecipe = {new ItemStack(Items.CARROT), new ItemStack(Items.BEETROOT), new ItemStack(Items.POTATO), new ItemStack(ModItems.TOMATO.get())};
+    public int[] veggieBurgerRecipeCounts = {2,1,1,1};
+    public ItemStack[] revivalBaguetteRecipe = {new ItemStack(ModItems.WOC_MEAT.get()), new ItemStack(Items.MILK_BUCKET), new ItemStack(Items.BEETROOT), new ItemStack(ModItems.TOMATO.get())};
+    public int[] revivalBaguetteRecipeCounts = {1,2,1,1};
+    public ItemStack[] selectedFoodRecipe;
     public int selectedFood;
     public ItemStack foodOutput;
     public Vector2f mousePos;
@@ -49,6 +58,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             this.selectedFood = a;
         }else{
             this.selectedFood = 1;
+            this.botContainer.cookbot.selectedFood = 1;
         }
 
         this.imageWidth = WIDTH;
@@ -89,25 +99,56 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         this.blit(matrixStack, offsetX, offsetY, 0, 0, WIDTH, HEIGHT, 512, 512); //This last two ints are responsible for texture resolution
 
 
-        //Texts
-        this.font.draw(matrixStack, COOKBOT_LABEL_GUI, (float)65+offsetX, (float)49+offsetY, 16777215);
-        //TODO the colors and positions
-
-
         //Live stuff
         this.minecraft.textureManager.bind(COOKBOT_GUI);
         switch (this.selectedFood){
             case 1 :
                 //Pizza Burger
                 selectFied(this.selectedFood, matrixStack, offsetX, offsetY);
+                for (int i = 0; i < pizzaBurgerRecipe.length; i++){
+                    ItemStack dispStack = pizzaBurgerRecipe[i];
+                    dispStack.setCount(pizzaBurgerRecipeCounts[i]);
+                    this.minecraft.getItemRenderer().renderGuiItem(dispStack, 197+offsetX+(20*i), 191+offsetY);
+                    if(!this.inventory.player.isCreative()){
+                        int a = 0;
+                        if(this.inventory.items.contains(dispStack)){
+                            a = this.inventory.items.get(this.inventory.findSlotMatchingItem(dispStack)).getCount();
+                        }
+                        this.font.draw(matrixStack, a+"/"+pizzaBurgerRecipeCounts[i], (float)190+offsetX+(25*i), (float)182+offsetY, 16777215);
+                    }
+                }
                 break;
             case 2 :
                 //Veggie Burger
                 selectFied(this.selectedFood, matrixStack, offsetX, offsetY);
+                for (int i = 0; i < veggieBurgerRecipe.length; i++){
+                    ItemStack dispStack = veggieBurgerRecipe[i];
+                    dispStack.setCount(veggieBurgerRecipeCounts[i]);
+                    this.minecraft.getItemRenderer().renderGuiItem(dispStack, 197+offsetX+(20*i), 191+offsetY);
+                    if(!this.inventory.player.isCreative()){
+                        int a = 0;
+                        if(this.inventory.items.contains(dispStack)){
+                            a = this.inventory.items.get(this.inventory.findSlotMatchingItem(dispStack)).getCount();
+                        }
+                        this.font.draw(matrixStack, a+"/"+veggieBurgerRecipeCounts[i], (float)190+offsetX+(25*i), (float)182+offsetY, 16777215);
+                    }
+                }
                 break;
             case 3 :
                 //revival Baguette
                 selectFied(this.selectedFood, matrixStack, offsetX, offsetY);
+                for (int i = 0; i < revivalBaguetteRecipe.length; i++){
+                    ItemStack dispStack = revivalBaguetteRecipe[i];
+                    dispStack.setCount(revivalBaguetteRecipeCounts[i]);
+                    this.minecraft.getItemRenderer().renderGuiItem(dispStack, 197+offsetX+(20*i), 191+offsetY);
+                    if(!this.inventory.player.isCreative()){
+                        int a = 0;
+                        if(this.inventory.items.contains(dispStack)){
+                            a = this.inventory.items.get(this.inventory.findSlotMatchingItem(dispStack)).getCount();
+                        }
+                        this.font.draw(matrixStack, a+"/"+revivalBaguetteRecipeCounts[i], (float)190+offsetX+(25*i), (float)182+offsetY, 16777215);
+                    }
+                }
                 break;
         }
 
@@ -153,11 +194,14 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                     this.blit(matrixStack, 39+offsetX, 216+offsetY, this.getBlitOffset(), 207.0F, 332.0F, 305, 17, 512, 512);
                 }
                 this.minecraft.getItemRenderer().renderGuiItem(this.botContainer.cookbot.outputItem, 81+offsetX, 196+offsetY);
+
             }
         }
 
 
 
+        //Texts
+        this.font.draw(matrixStack, COOKBOT_LABEL_GUI, (float)56+offsetX, (float)49+offsetY, 16777215);
         this.font.draw(matrixStack, COOKBOT_LABEL_PIZZABURGER, (float)13+offsetX, (float)99+offsetY, 16747607);
         this.font.draw(matrixStack, COOKBOT_LABEL_VEGGIEBURGER, (float)93+offsetX, (float)99+offsetY, 16777151);
         this.font.draw(matrixStack, COOKBOT_LABEL_REVIVALBAGUETTE, (float)42+offsetX, (float)160+offsetY, 12648350);
@@ -233,13 +277,43 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                 this.botContainer.cookbot.isCooking = true;
             }
         }else if(isMouseInsideBox(this.mousePos, FIELD_COLLECT, getOffsetX(), getOffsetY()) && canCollect){
-            this.inventory.add(this.botContainer.cookbot.outputItem);
-            canCollect = false;
-            this.botContainer.cookbot.outputItem = ItemStack.EMPTY;
-            this.botContainer.cookbot.isCooking = false;
+            if(this.inventory.getFreeSlot() != -1){
+                //this.inventory.add(this.botContainer.cookbot.outputItem);
+                this.botContainer.cookbot.giveResult(this.inventory.player);
+
+                canCollect = false;
+                this.botContainer.cookbot.outputItem = ItemStack.EMPTY;
+                this.botContainer.cookbot.isCooking = false;
+
+            }else{
+                this.inventory.player.displayClientMessage(new TranslationTextComponent("message."+ ScrapCraft.MOD_ID+".action_bar.inventory_full").withStyle(TextFormatting.BOLD), true);
+            }
         }
         return super.mouseClicked(p_231044_1_, p_231044_3_, p_231044_5_);
     }
+
+    /**public boolean canCraftFood(int foodId){
+        boolean result = false;
+        switch (foodId){
+            case 1:
+                for (int i = 0; i < pizzaBurgerRecipe.length; i ++){
+                    if(this.inventory.items.contains(pizzaBurgerRecipe[i])){
+                        ItemStack recipeStack = pizzaBurgerRecipe[i];
+                    }else{
+                        result = false;
+                    }
+                }
+                result =;
+                break;
+            case 2:
+                result =;
+                break;
+            case 3:
+                result =;
+                break;
+        }
+        return result;
+    }**/
 
     public int getOffsetX(){
         return (this.width - WIDTH) / 2;

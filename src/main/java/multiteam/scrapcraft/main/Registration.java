@@ -2,7 +2,7 @@ package multiteam.scrapcraft.main;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
-import multiteam.scrapcraft.main.container.ModContainers;
+import multiteam.scrapcraft.main.client.container.ModContainers;
 import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.container.ContainerType;

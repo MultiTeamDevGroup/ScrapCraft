@@ -1,4 +1,4 @@
-package multiteam.scrapcraft.main.container;
+package multiteam.scrapcraft.main.client.container;
 
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;

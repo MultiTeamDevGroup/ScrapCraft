@@ -1,13 +1,7 @@
-package multiteam.scrapcraft.main.container;
+package multiteam.scrapcraft.main.client.container;
 
-import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
 

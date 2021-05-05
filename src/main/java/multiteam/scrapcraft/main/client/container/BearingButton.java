@@ -1,4 +1,4 @@
-package multiteam.scrapcraft.main.container;
+package multiteam.scrapcraft.main.client.container;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.gui.widget.button.AbstractButton;

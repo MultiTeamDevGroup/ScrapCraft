@@ -1,7 +1,7 @@
 {
     "MACHINES":"MOD MACHINES",
-    "block.scrapcraft.cookbot_block":"Cook Bot",
-    "block.scrapcraft.observerbot_block":"Observer Bot",
+    "block.scrapcraft.cookbot_block":"Cookbot",
+    "block.scrapcraft.observerbot_block":"Observerbot",
 
     "BLOCKS":"MOD BLOCKS",
     "block.scrapcraft.metal_1":"Metal Block 1",
@@ -26,8 +26,9 @@
     "itemGroup.scrapcraft_tools": "ScrapCraft - Tools",
     "itemGroup.scrapcraft_items": "ScrapCraft - Items",
     "itemGroup.scrapcraft_blocks": "ScrapCraft - Blocks",
-    "container.scrapcraft.cookbot":"COOK BOT",
+    "container.scrapcraft.cookbot":"C O O K B O T",
     "container.scrapcraft.cookbot.pizza_burger_name":"PIZZA BURGER",
     "container.scrapcraft.cookbot.veggie_burger_name":"VEGGIE BURGER",
-    "container.scrapcraft.cookbot.revival_baguette_name":"REVIVAL BAGUETTE"
+    "container.scrapcraft.cookbot.revival_baguette_name":"REVIVAL BAGUETTE",
+    "message.scrapcraft.action_bar.inventory_full": "Inventory Full!"
 }

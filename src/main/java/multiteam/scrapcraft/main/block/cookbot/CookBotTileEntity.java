@@ -2,9 +2,10 @@ package multiteam.scrapcraft.main.block.cookbot;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
-import multiteam.scrapcraft.main.container.CookBotContainer;
+import multiteam.scrapcraft.main.client.container.CookBotContainer;
 import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
@@ -42,7 +43,7 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     private <E extends TileEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         //event.getController().transitionLengthTicks = 0;
-        if(this.isCooking){
+        if(!this.isCooking){
             if(event.getController().getAnimationState() == AnimationState.Stopped){
                 int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
                 if(randomChance < 10){ //10% - head hitting
@@ -56,13 +57,19 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
                 }
             }
         }else{
-            if(event.getController().getAnimationState() == AnimationState.Stopped){
-                int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-                if(randomChance < 10){ //10% - head hitting
-                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_2", false));
-                }else{ //10% - no anim
-                    return PlayState.CONTINUE;
-                }
+            switch (selectedFoodToProgress){
+                case 1:
+                    //Pizza Burger - anim
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.cook_pizza_burger", false));
+                    break;
+                case 2:
+                    //Veggie burger - anim
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.cook_veggie_burger", false));
+                    break;
+                case 3:
+                    //Revival Baguette - anim
+                    event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.cook_revival_baguette", false));
+                    break;
             }
         }
 
@@ -180,6 +187,12 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
             break;
         }
         return returnStack;
+    }
+
+    public void giveResult(PlayerEntity player){
+        if(!player.level.isClientSide){
+            player.inventory.add(getOutputItem(this.selectedFoodToProgress));
+        }
     }
 
 
