@@ -61,7 +61,7 @@ public class CanisterBlock extends Block {
         if (entity instanceof ArrowEntity || entity instanceof WeaponProjectile){
             if(!worldIn.isClientSide){
                 entity.remove(false);
-                worldIn.explode(null, pos.getX(), pos.getY(), pos.getZ(), 5.0F, Explosion.Mode.DESTROY);
+                worldIn.explode(null, pos.getX(), pos.getY(), pos.getZ(), 3.0F, Explosion.Mode.DESTROY);
             }
         }
     }
