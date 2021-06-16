@@ -1,0 +1,44 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.smallexplosive2.explode": {
+			"animation_length": 1.25,
+			"bones": {
+				"canister": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.25": {
+							"vector": [0, 0.75, 0],
+							"easing": "linear"
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"1.25": {
+							"vector": [1.6, 1.1, 1.6],
+							"easing": "linear"
+						}
+					}
+				}
+			}
+		},
+		"animation.smallexplosive2.stay": {
+			"loop": true,
+			"animation_length": 0.08333,
+			"bones": {
+				"canister": {
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				}
+			}
+		}
+	}
+}

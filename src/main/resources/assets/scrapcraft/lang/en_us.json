@@ -16,6 +16,7 @@
 
     "ITEMS":"MOD ITEMS",
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
+    "item.scrapcraft.spud_gun":"Spud Gun",
     "item.scrapcraft.glue":"Glue",
     "item.scrapcraft.pizza_burger":"Pizza Burger",
     "item.scrapcraft.veggie_burger":"Veggie Burger",
@@ -32,5 +33,9 @@
     "container.scrapcraft.cookbot.pizza_burger_name":"PIZZA BURGER",
     "container.scrapcraft.cookbot.veggie_burger_name":"VEGGIE BURGER",
     "container.scrapcraft.cookbot.revival_baguette_name":"REVIVAL BAGUETTE",
-    "message.scrapcraft.action_bar.inventory_full": "Inventory Full!"
+    "message.scrapcraft.action_bar.inventory_full": "Inventory Full!",
+
+    "SOUND":"MOD SOUND",
+    "item.scrapcraft.spudgun.shoot.sub":"Spudgun shooting",
+    "item.scrapcraft.spudgun.shoot_fail.sub":"Spudgun failing to shoot"
 }

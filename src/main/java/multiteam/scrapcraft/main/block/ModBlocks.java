@@ -2,6 +2,8 @@ package multiteam.scrapcraft.main.block;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
+import multiteam.scrapcraft.main.block.canisters.CanisterBlock;
+import multiteam.scrapcraft.main.block.canisters.CanisterTileEntity;
 import multiteam.scrapcraft.main.block.cookbot.CookBotBlock;
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotBlock;
@@ -38,6 +40,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> PUNCHED_STEEL = registerWithItem("punched_steel", () -> new RenderSideBlock(AbstractBlock.Properties.of(Material.METAL).isViewBlocking(ModBlocks::never).dynamicShape().strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
     public static final RegistryObject<Block> SQUARE_MESH = registerWithItem("square_mesh", () -> new RenderSideBlock(AbstractBlock.Properties.of(Material.METAL).isViewBlocking(ModBlocks::never).dynamicShape().strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
     public static final RegistryObject<Block> INSULATION = registerWithItem("insulation", () -> new Block(AbstractBlock.Properties.of(Material.WOOL).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.WOOL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
+    public static final RegistryObject<Block> CANISTER_BLOCK_SMALL = registerWithItem("canister_block_small", () -> new CanisterBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_RED).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
+    public static final RegistryObject<TileEntityType<CanisterTileEntity>> CANISTER_TILE_SMALL = Registration.TILE_ENTITY_TYPES.register("canister_tile_small", () -> TileEntityType.Builder.of(CanisterTileEntity::new, CANISTER_BLOCK_SMALL.get()).build(null));
 
 
     public static void register(){}

@@ -94,7 +94,6 @@ public class CookBotBlock extends Block {
                 NetworkHooks.openGui(((ServerPlayerEntity) playerEntity), (CookBotTileEntity)cookbot, pos);
             }
         }
-
         return super.use(state, worldIn, pos, playerEntity, hand, hitResult);
     }
 }

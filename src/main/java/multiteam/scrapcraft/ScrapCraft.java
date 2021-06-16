@@ -3,6 +3,7 @@ package multiteam.scrapcraft;
 import multiteam.multicore_lib.setup.utilities.ItemGroupTool;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.ModBlocks;
+import multiteam.scrapcraft.main.block.canisters.CanisterRenderer;
 import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
 import multiteam.scrapcraft.main.client.container.CookBotScreen;
@@ -62,6 +63,7 @@ public class ScrapCraft
 
         ClientRegistry.bindTileEntityRenderer(ModBlocks.COOKBOT_TILE.get(), CookBotRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.OBSERVERBOT_TILE.get(), ObserverBotRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModBlocks.CANISTER_TILE_SMALL.get(), CanisterRenderer::new);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.OBSERVERBOT_BLOCK.get(), RenderType.cutoutMipped());

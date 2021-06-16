@@ -1,0 +1,18 @@
+{
+	"item.scrapcraft.spudgun.shoot": {
+		"category": "item",
+		"subtitle": "item.scrapcraft.spudgun.shoot.sub",
+		"sounds": [{
+			"name": "scrapcraft:item/spudgun/shoot",
+			"stream": true
+		}]
+	},
+	"item.scrapcraft.spudgun.shoot_fail": {
+		"category": "item",
+		"subtitle": "item.scrapcraft.spudgun.shoot_fail.sub",
+		"sounds": [{
+			"name": "scrapcraft:item/spudgun/shoot_fail",
+			"stream": true
+		}]
+	}
+}

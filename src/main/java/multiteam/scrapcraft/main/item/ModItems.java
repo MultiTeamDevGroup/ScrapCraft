@@ -11,6 +11,7 @@ public class ModItems {
 
     //Tools
     public static final RegistryObject<Item> HAMMER = Registration.ITEMS.register("sledge_hammer", () -> new HammerItem(ItemTier.IRON, 1, -2.8F, (new Item.Properties()).tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
+    public static final RegistryObject<Item> SPUDGUN = Registration.ITEMS.register("spud_gun", () -> new SpudGun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
 
     //Items
     public static final RegistryObject<Item> GLUE = Registration.ITEMS.register("glue", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
