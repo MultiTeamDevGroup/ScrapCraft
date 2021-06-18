@@ -64,7 +64,8 @@ public class CookbotCommsPacket {
                 tile.cookingProgress = progress;
                 tile.isCooking = isCooking;
                 tile.outputItem = outputItem;
-                tile.save(tile.getTileData());
+                tile.setChanged();
+                //tile.save(tile.getTileData());
                 //This odes send data to the server, and the tile should recieve it but idk why it still doesnt!!! SEND HELP
                 System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
             }
