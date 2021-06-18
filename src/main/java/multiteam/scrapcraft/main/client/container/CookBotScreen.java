@@ -6,6 +6,9 @@ import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.item.ModItems;
+import multiteam.scrapcraft.main.network.Networking;
+import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
+import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -58,7 +61,9 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             this.selectedFood = a;
         }else{
             this.selectedFood = 1;
-            this.botContainer.cookbot.selectedFood = 1;
+            //Networking.sendToServer(new Object());
+            Networking.sendToServer(new CookbotCommsPacket(1, this.botContainer.cookbot.cookingProgress, false, ItemStack.EMPTY, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+            //this.botContainer.cookbot.selectedFood = 1;
         }
 
         this.imageWidth = WIDTH;
@@ -69,9 +74,6 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         this.topPos = 0;
     }
 
-    private void codeThatsRunByButtonPress(String id) {
-        System.out.println(id);
-    }
 
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
@@ -251,42 +253,53 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         if(isMouseInsideBox(this.mousePos, FIELD_1, getOffsetX(), getOffsetY())){
             //Pizza Burger
             this.selectedFood = 1;
-            this.botContainer.cookbot.selectedFood = selectedFood;
+            Networking.sendToServer(new CookbotCommsPacket(1, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+            //this.botContainer.cookbot.selectedFood = selectedFood;
         }else if(isMouseInsideBox(this.mousePos, FIELD_2, getOffsetX(), getOffsetY())){
             //Veggie Burger
             this.selectedFood = 2;
-            this.botContainer.cookbot.selectedFood = selectedFood;
+            Networking.sendToServer(new CookbotCommsPacket(2, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+            //this.botContainer.cookbot.selectedFood = selectedFood;
         }else if(isMouseInsideBox(this.mousePos, FIELD_3, getOffsetX(), getOffsetY())){
             //revival Baguette
             this.selectedFood = 3;
-            this.botContainer.cookbot.selectedFood = selectedFood;
+            Networking.sendToServer(new CookbotCommsPacket(3, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+            //this.botContainer.cookbot.selectedFood = selectedFood;
         }else if(isMouseInsideBox(this.mousePos, FIELD_CRAFT, getOffsetX(), getOffsetY())){
             if(this.botContainer.cookbot.outputItem == ItemStack.EMPTY && !this.botContainer.cookbot.isCooking){
-                this.botContainer.cookbot.selectedFood = selectedFood;
+                Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                //this.botContainer.cookbot.selectedFood = selectedFood;
                 switch (this.botContainer.cookbot.selectedFood){
                     case 1:
-                        this.botContainer.cookbot.cookingProgress = pizzaBurgerTime;
+                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.pizzaBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        //this.botContainer.cookbot.cookingProgress = pizzaBurgerTime;
                         break;
                     case 2:
-                        this.botContainer.cookbot.cookingProgress = veggieBurgerTime;
+                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.veggieBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        //this.botContainer.cookbot.cookingProgress = veggieBurgerTime;
                         break;
                     case 3:
-                        this.botContainer.cookbot.cookingProgress = revivalBaguetteTime;
+                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.revivalBaguetteTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        //this.botContainer.cookbot.cookingProgress = revivalBaguetteTime;
                         break;
                 }
-                this.botContainer.cookbot.isCooking = true;
+                Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                //this.botContainer.cookbot.isCooking = true;
             }
         }else if(isMouseInsideBox(this.mousePos, FIELD_COLLECT, getOffsetX(), getOffsetY()) && canCollect){
             if(this.inventory.getFreeSlot() != -1){
                 //this.inventory.add(this.botContainer.cookbot.outputItem);
-                this.botContainer.cookbot.giveResult(this.inventory.player);
+                //this.botContainer.cookbot.giveResult(this.inventory.player);
+                Networking.sendToServer(new CookbotGiveResultsPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
 
                 canCollect = false;
-                this.botContainer.cookbot.outputItem = ItemStack.EMPTY;
-                this.botContainer.cookbot.isCooking = false;
+                Networking.sendToServer(new CookbotCommsPacket(this.botContainer.cookbot.selectedFood, this.botContainer.cookbot.cookingProgress, false, ItemStack.EMPTY, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                //this.botContainer.cookbot.outputItem = ItemStack.EMPTY;
+                //this.botContainer.cookbot.isCooking = false;
 
             }else{
                 this.inventory.player.displayClientMessage(new TranslationTextComponent("message."+ ScrapCraft.MOD_ID+".action_bar.inventory_full").withStyle(TextFormatting.BOLD), true);
+                minecraft.setScreen(null);
             }
         }
         return super.mouseClicked(p_231044_1_, p_231044_3_, p_231044_5_);
@@ -322,4 +335,11 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public int getOffsetY(){
         return (this.height - HEIGHT) / 2;
     }
+
+    @Override
+    public boolean shouldCloseOnEsc() {
+        return true;
+    }
+
+
 }

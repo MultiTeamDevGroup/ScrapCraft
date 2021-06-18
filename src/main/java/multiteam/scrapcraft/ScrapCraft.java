@@ -9,6 +9,7 @@ import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
 import multiteam.scrapcraft.main.client.container.CookBotScreen;
 import multiteam.scrapcraft.main.client.container.ModContainers;
 import multiteam.scrapcraft.main.item.ModItems;
+import multiteam.scrapcraft.main.network.Networking;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
@@ -54,7 +55,7 @@ public class ScrapCraft
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
+        Networking.registerMessages();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
