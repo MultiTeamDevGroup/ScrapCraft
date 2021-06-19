@@ -195,6 +195,13 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
         }
     }
 
+    public void setValues(int selected, int progress, boolean isCooking, ItemStack output){
+        this.selectedFood = selected;
+        this.cookingProgress = progress;
+        this.isCooking = isCooking;
+        this.outputItem = output;
+    }
+
 
     /**@Override
     public AxisAlignedBB getRenderBoundingBox() {

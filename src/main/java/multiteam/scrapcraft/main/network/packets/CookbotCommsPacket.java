@@ -1,14 +1,18 @@
 package multiteam.scrapcraft.main.network.packets;
 
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -54,23 +58,22 @@ public class CookbotCommsPacket {
 
     public boolean handleComms(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ServerWorld worldIn = ctx.get().getSender().level.getServer().getLevel(type);
-            //EntityType<?> entityType = ForgeRegistries.ENTITIES.getValue(id);
-            CookBotTileEntity tile = (CookBotTileEntity) worldIn.getBlockEntity(pos);
-            if (tile == null) {
-                throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
+            ServerPlayerEntity player = ctx.get().getSender();
+            ServerWorld worldIn = player.getLevel();
+            TileEntity tileEntity = worldIn.getBlockEntity(pos);
+            if(tileEntity instanceof CookBotTileEntity){
+                CookBotTileEntity tile = (CookBotTileEntity) tileEntity;
+                if (tile == null) {
+                    throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
+                }
+                tile.setValues(selected, progress, isCooking, outputItem);
+                tile.setChanged();
+                System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
+                //I am going to get insane
+                //worldIn.setBlockAndUpdate(player.blockPosition(), Blocks.STONE.defaultBlockState());
             }else{
-                //tile.save(tile.getTileData());
-                //This odes send data to the server, and the tile should recieve it but idk why it still doesnt!!! SEND HELP
-                //I have figured that something here doesnt work. does it actually sets the values in the tile or not?
+                throw new IllegalStateException("This tile is not a cookbot!");
             }
-            tile.selectedFood = selected;
-            tile.cookingProgress = progress;
-            tile.isCooking = isCooking;
-            tile.outputItem = outputItem;
-            tile.setChanged();
-            System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
-            //entityType.spawn(spawnWorld, null, null, pos, SpawnReason.SPAWN_EGG, true, true);
         });
         return true;
     }
