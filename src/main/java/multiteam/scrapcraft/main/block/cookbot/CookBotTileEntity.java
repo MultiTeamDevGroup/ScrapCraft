@@ -96,30 +96,29 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     @Override
     public void load(BlockState state, CompoundNBT nbt) {
+        if(nbt == null){
+            nbt = new CompoundNBT();
+        }
         super.load(state, nbt);
 
         this.isCooking = nbt.getBoolean("isCooking");
         this.selectedFood = nbt.getInt("selectedFood");
         this.selectedFoodToProgress = nbt.getInt("selectedFoodToProgress");
         this.cookingProgress = nbt.getInt("cookingProgress");
-        this.items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-        if(!this.tryLoadLootTable(nbt)){
-            ItemStackHelper.loadAllItems(nbt, this.items);
-        }
 
     }
 
     @Override
     public CompoundNBT save(CompoundNBT nbt) {
+        if(nbt == null){
+            nbt = new CompoundNBT();
+        }
         super.save(nbt);
 
         nbt.putBoolean("isCooking", this.isCooking);
         nbt.putInt("selectedFood", this.selectedFood);
         nbt.putInt("selectedFoodToProgress", this.selectedFoodToProgress);
         nbt.putInt("cookingProgress", this.cookingProgress);
-        if(!this.trySaveLootTable(nbt)){
-            ItemStackHelper.saveAllItems(nbt, this.items);
-        }
 
         return nbt;
     }
@@ -167,6 +166,9 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
             isCooking = false;
         }
 
+
+
+
     }
 
 
@@ -200,7 +202,14 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
         this.cookingProgress = progress;
         this.isCooking = isCooking;
         this.outputItem = output;
+        updateClient();
     }
+
+    public void updateClient(){
+        this.getLevel().notify();
+    }
+
+
 
 
     /**@Override

@@ -66,8 +66,7 @@ public class CookbotCommsPacket {
                 if (tile == null) {
                     throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
                 }
-                tile.setValues(selected, progress, isCooking, outputItem);
-                tile.setChanged();
+                tile.setValues(this.selected, this.progress, this.isCooking, this.outputItem);
                 System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
                 //I am going to get insane
                 //worldIn.setBlockAndUpdate(player.blockPosition(), Blocks.STONE.defaultBlockState());

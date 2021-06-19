@@ -9,6 +9,7 @@ import multiteam.scrapcraft.main.item.ModItems;
 import multiteam.scrapcraft.main.network.Networking;
 import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
+import multiteam.scrapcraft.main.network.packets.CookbotNotifyClientPacket;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -56,6 +57,8 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public CookBotScreen(CookBotContainer container, PlayerInventory playerInv, ITextComponent title) {
         super(container, playerInv, title);
         this.botContainer = container;
+        Networking.sendToServer(new CookbotNotifyClientPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+
         int a = botContainer.cookbot.selectedFood;
         if(a == 1 || a == 2 || a == 3){
             this.selectedFood = a;

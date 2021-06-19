@@ -11,18 +11,16 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-
-public class CookbotGiveResultsPacket {
-
+public class CookbotNotifyClientPacket {
     private final RegistryKey<World> type;
     private final BlockPos pos;
 
-    public CookbotGiveResultsPacket(PacketBuffer buf) {
+    public CookbotNotifyClientPacket(PacketBuffer buf) {
         type = RegistryKey.create(Registry.DIMENSION_REGISTRY, buf.readResourceLocation());
         pos = buf.readBlockPos();
     }
 
-    public CookbotGiveResultsPacket(RegistryKey<World> type, BlockPos pos) {
+    public CookbotNotifyClientPacket(RegistryKey<World> type, BlockPos pos) {
         this.type = type;
         this.pos = pos;
     }
@@ -40,11 +38,10 @@ public class CookbotGiveResultsPacket {
             if (tile == null) {
                 throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
             }else{
-                tile.giveResult(ctx.get().getSender().connection.player);
+                tile.updateClient();
             }
             //entityType.spawn(spawnWorld, null, null, pos, SpawnReason.SPAWN_EGG, true, true);
         });
         return true;
     }
-
 }
