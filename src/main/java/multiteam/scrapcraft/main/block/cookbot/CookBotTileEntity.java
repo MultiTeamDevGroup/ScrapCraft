@@ -200,57 +200,6 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
         this.cookingProgress = progress;
         this.isCooking = isCooking;
         this.outputItem = output;
-//        updateClient();
-    }
-
-    public void updateClient(){
-
-    }
-
-    public boolean craft(ServerPlayerEntity player) {
-        Item[] items = new Item[4];
-        Item outputItem;
-
-        switch (selectedFood) {
-            case 1: {
-                items[0] = ModItems.WOC_MEAT.get();
-                items[1] = Items.MILK_BUCKET;
-                items[2] = Items.POTATO;
-                items[3] = ModItems.TOMATO.get();
-
-                outputItem = ModItems.PIZZA_BURGER.get();
-            }
-            case 2: {
-                items[0] = Items.CARROT;
-                items[1] = Items.BEETROOT;
-                items[2] = Items.POTATO;
-                items[3] = ModItems.TOMATO.get();
-
-                outputItem = ModItems.VEGGIE_BURGER.get();
-            }
-            case 3: {
-                items[0] = ModItems.WOC_MEAT.get();
-                items[1] = Items.MILK_BUCKET;
-                items[2] = Items.BEETROOT;
-                items[3] = ModItems.TOMATO.get();
-
-                outputItem = ModItems.REVIVAL_BAGUETTE.get();
-            }
-        }
-
-        Set<Item> remaining = new HashSet<>(Arrays.asList(items));
-        remaining.removeIf(Objects::isNull);
-        for (ItemStack stack : player.inventory.items) {
-            remaining.remove(stack.getItem());
-        }
-
-        // Remaining are also the missing items at this point.
-
-        if (remaining.size() > 0) {
-            return false;
-        }
-
-        return true;
     }
 
     /*
