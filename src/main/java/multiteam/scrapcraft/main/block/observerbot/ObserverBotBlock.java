@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.block.observerbot;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -19,7 +20,11 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ObserverBotBlock extends Block {
 
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
@@ -77,8 +82,8 @@ public class ObserverBotBlock extends Block {
         return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
-    public BlockState mirror(BlockState state, Mirror mirr) {
-        return state.rotate(mirr.getRotation(state.getValue(FACING)));
+    public BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {

@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.block.canisters;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.item.WeaponProjectile;
 import net.minecraft.block.Block;
@@ -16,7 +17,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class CanisterBlock extends Block {
 
     private static final VoxelShape SHAPE = Block.box(3.0D, 1.0D, 3.0D, 13.0D, 9.0D, 13.0D);

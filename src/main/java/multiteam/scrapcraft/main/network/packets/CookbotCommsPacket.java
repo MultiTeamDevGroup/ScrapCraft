@@ -58,7 +58,7 @@ public class CookbotCommsPacket {
         ctx.get().enqueueWork(() -> {
             ServerPlayerEntity player = ctx.get().getSender();
             ServerWorld worldIn = Objects.requireNonNull(Objects.requireNonNull(player).getServer()).getLevel(type);
-            TileEntity tileEntity = worldIn.getBlockEntity(pos);
+            TileEntity tileEntity = Objects.requireNonNull(worldIn).getBlockEntity(pos);
             if (tileEntity == null) {
                 throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
             }

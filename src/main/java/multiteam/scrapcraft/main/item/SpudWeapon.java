@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.item;
 
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -10,8 +11,11 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Predicate;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public abstract class SpudWeapon extends BowItem {
 
     public SpudWeapon(Properties properties) {
@@ -39,9 +43,9 @@ public abstract class SpudWeapon extends BowItem {
             if(canShoot){
                 if(!worldIn.isClientSide){
                     this.createProjectileEntities(worldIn, playerEntity);
-                    worldIn.playSound((PlayerEntity) null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootSound(), SoundCategory.PLAYERS, 1.0F, 1.0F);
+                    worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootSound(), SoundCategory.PLAYERS, 1.0F, 1.0F);
                     if(!playerEntity.isCreative()){
-                        stack.hurtAndBreak(1, (LivingEntity)playerEntity, (p) -> { ((PlayerEntity)p).broadcastBreakEvent(playerEntity.getUsedItemHand()); });
+                        stack.hurtAndBreak(1, (LivingEntity)playerEntity, (p) -> p.broadcastBreakEvent(playerEntity.getUsedItemHand()));
                         ammoStack.shrink(1);
                         if (ammoStack.isEmpty()) {
                             playerEntity.inventory.removeItem(ammoStack);
@@ -49,7 +53,7 @@ public abstract class SpudWeapon extends BowItem {
                     }
                 }
             }else{
-                worldIn.playSound((PlayerEntity) null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootFail(), SoundCategory.PLAYERS, 1.0F, 1.0F);
+                worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootFail(), SoundCategory.PLAYERS, 1.0F, 1.0F);
             }
         }
     }

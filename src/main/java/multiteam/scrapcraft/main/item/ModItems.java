@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraftforge.fml.RegistryObject;
 
+@SuppressWarnings("unused")
 public class ModItems {
 
     //Tools

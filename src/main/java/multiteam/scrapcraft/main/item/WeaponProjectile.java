@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.item;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -9,6 +10,10 @@ import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class WeaponProjectile extends SnowballEntity {
     public WeaponProjectile(World worldIn, LivingEntity owner) {
         super(worldIn, owner);

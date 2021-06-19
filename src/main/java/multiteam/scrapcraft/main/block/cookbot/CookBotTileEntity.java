@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.block.cookbot;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.client.container.CookBotContainer;
@@ -12,7 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
@@ -26,11 +26,14 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.concurrent.ThreadLocalRandom;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class CookBotTileEntity extends LockableLootTileEntity implements IAnimatable, ITickableTileEntity {
 
-    public static int slots = 1;
+    public static final int slots = 1;
     protected NonNullList<ItemStack> items = NonNullList.withSize(slots, ItemStack.EMPTY);
     public int selectedFood;
     public int selectedFoodToProgress;
@@ -40,16 +43,16 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
     public boolean isCooking;
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    private <E extends TileEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         //event.getController().transitionLengthTicks = 0;
         if(!this.isCooking){
             if(event.getController().getAnimationState() == AnimationState.Stopped){
                 int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
                 if(randomChance < 10){ //10% - head hitting
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_2", false));
-                }else if(randomChance >= 10 && randomChance < 80){ //70% - look at spoon
+                }else if(randomChance < 80){ //70% - look at spoon
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_1", false));
-                }else if(randomChance >= 80 && randomChance < 90){ //10% - spoon sharpen
+                }else if(randomChance < 90){ //10% - spoon sharpen
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_3", false));
                 }else{ //10% - no anim
                     return PlayState.CONTINUE;
@@ -85,7 +88,7 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     @Override
@@ -95,9 +98,6 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     @Override
     public void load(BlockState state, CompoundNBT nbt) {
-        if(nbt == null){
-            nbt = new CompoundNBT();
-        }
         super.load(state, nbt);
 
         this.isCooking = nbt.getBoolean("isCooking");
@@ -109,9 +109,6 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     @Override
     public CompoundNBT save(CompoundNBT nbt) {
-        if(nbt == null){
-            nbt = new CompoundNBT();
-        }
         super.save(nbt);
 
         nbt.putBoolean("isCooking", this.isCooking);
@@ -146,7 +143,7 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     @Override
     public int getContainerSize() {
-        return this.slots;
+        return slots;
     }
 
     @Override
@@ -197,10 +194,4 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
         this.isCooking = isCooking;
         this.outputItem = output;
     }
-
-    /*
-    @Override
-    public AxisAlignedBB getRenderBoundingBox() {
-        return null;
-    }*/
 }

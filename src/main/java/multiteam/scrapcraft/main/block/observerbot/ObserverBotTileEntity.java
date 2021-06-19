@@ -14,7 +14,7 @@ public class ObserverBotTileEntity extends TileEntity implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    private <E extends TileEntity & IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         //event.getController().transitionLengthTicks = 0;
         return PlayState.CONTINUE;
     }
@@ -29,7 +29,7 @@ public class ObserverBotTileEntity extends TileEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     @Override
@@ -37,8 +37,4 @@ public class ObserverBotTileEntity extends TileEntity implements IAnimatable {
         return factory;
     }
 
-    /**@Override
-    public AxisAlignedBB getRenderBoundingBox() {
-    return null;
-    }**/
 }

@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.client.container;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,18 +12,22 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Objects;
 
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class CookBotContainer extends Container {
-
+    private final PlayerInventory playerInventory;
     public final CookBotTileEntity cookbot;
     private final IWorldPosCallable canInteractWithCallable;
 
     public CookBotContainer(final int windowid, final PlayerInventory playerInventory, final CookBotTileEntity tileE) {
         super(ModContainers.COOKBOT_CONTAINER_TYPE.get(), windowid);
+        this.playerInventory = playerInventory;
         this.cookbot = tileE;
-        this.canInteractWithCallable = IWorldPosCallable.create(tileE.getLevel(), tileE.getBlockPos());
+        this.canInteractWithCallable = IWorldPosCallable.create(Objects.requireNonNull(tileE.getLevel()), tileE.getBlockPos());
 
     }
 
@@ -67,4 +72,8 @@ public class CookBotContainer extends Container {
         return stack;
     }
 
+    @SuppressWarnings("unused")
+    public PlayerInventory getPlayerInventory() {
+        return playerInventory;
+    }
 }

@@ -2,6 +2,7 @@ package multiteam.scrapcraft.main.block.canisters;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
@@ -9,7 +10,10 @@ import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class CanisterRenderer extends GeoBlockRenderer<CanisterTileEntity> {
 
     public CanisterRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {

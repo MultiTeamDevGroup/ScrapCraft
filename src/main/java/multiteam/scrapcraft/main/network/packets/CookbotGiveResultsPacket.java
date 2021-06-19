@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 
@@ -34,13 +35,13 @@ public class CookbotGiveResultsPacket {
 
     public boolean handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ServerWorld worldIn = ctx.get().getSender().level.getServer().getLevel(type);
+            ServerWorld worldIn = Objects.requireNonNull(ctx.get().getSender()).level.getServer().getLevel(type);
             //EntityType<?> entityType = ForgeRegistries.ENTITIES.getValue(id);
             CookBotTileEntity tile = (CookBotTileEntity) worldIn.getBlockEntity(pos);
             if (tile == null) {
                 throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
             }else{
-                tile.giveResult(ctx.get().getSender().connection.player);
+                tile.giveResult(Objects.requireNonNull(ctx.get().getSender()).connection.player);
             }
             //entityType.spawn(spawnWorld, null, null, pos, SpawnReason.SPAWN_EGG, true, true);
         });

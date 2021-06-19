@@ -7,22 +7,22 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ObserverBotModel extends AnimatedGeoModel implements IAnimatable {
+public class ObserverBotModel extends AnimatedGeoModel<ObserverBotTileEntity> implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
     @Override
-    public ResourceLocation getModelLocation(Object block) {
+    public ResourceLocation getModelLocation(ObserverBotTileEntity block) {
         return new ResourceLocation(ScrapCraft.MOD_ID, "geo/tileentity/observerbot.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Object block) {
+    public ResourceLocation getTextureLocation(ObserverBotTileEntity block) {
         return new ResourceLocation(ScrapCraft.MOD_ID, "textures/tileentity/observerbot.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(Object block) {
+    public ResourceLocation getAnimationFileLocation(ObserverBotTileEntity block) {
         return new ResourceLocation(ScrapCraft.MOD_ID, "animations/tileentity/observerbot.animation.json");
     }
 

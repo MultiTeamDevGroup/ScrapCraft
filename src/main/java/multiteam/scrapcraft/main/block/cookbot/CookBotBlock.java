@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.block.cookbot;
 
+import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -22,7 +23,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class CookBotBlock extends Block {
 
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
