@@ -2,10 +2,9 @@ package multiteam.scrapcraft.main.item;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemTier;
 import net.minecraftforge.fml.RegistryObject;
-
-import java.util.Set;
 
 public class ModItems {
 

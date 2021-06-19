@@ -9,7 +9,6 @@ import multiteam.scrapcraft.main.item.ModItems;
 import multiteam.scrapcraft.main.network.Networking;
 import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
-import multiteam.scrapcraft.main.network.packets.CookbotNotifyClientPacket;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;

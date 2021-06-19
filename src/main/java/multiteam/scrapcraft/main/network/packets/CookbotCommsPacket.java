@@ -2,18 +2,15 @@ package multiteam.scrapcraft.main.network.packets;
 
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.network.Networking;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.Objects;

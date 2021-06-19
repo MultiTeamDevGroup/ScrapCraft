@@ -1,6 +1,5 @@
 package multiteam.scrapcraft.main.item;
 
-import multiteam.scrapcraft.main.sound.ModSound;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
