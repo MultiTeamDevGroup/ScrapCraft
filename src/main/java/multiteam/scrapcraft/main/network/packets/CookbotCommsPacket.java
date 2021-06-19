@@ -1,6 +1,7 @@
 package multiteam.scrapcraft.main.network.packets;
 
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
+import multiteam.scrapcraft.main.network.Networking;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -15,10 +16,10 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.network.NetworkEvent;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class CookbotCommsPacket {
-
     private final int selected;
     private final int progress;
     private final boolean isCooking;
@@ -59,15 +60,18 @@ public class CookbotCommsPacket {
     public boolean handleComms(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayerEntity player = ctx.get().getSender();
-            ServerWorld worldIn = player.getLevel();
+            ServerWorld worldIn = Objects.requireNonNull(Objects.requireNonNull(player).getServer()).getLevel(type);
             TileEntity tileEntity = worldIn.getBlockEntity(pos);
+            if (tileEntity == null) {
+                throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
+            }
             if(tileEntity instanceof CookBotTileEntity){
                 CookBotTileEntity tile = (CookBotTileEntity) tileEntity;
-                if (tile == null) {
-                    throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
-                }
                 tile.setValues(this.selected, this.progress, this.isCooking, this.outputItem);
                 System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
+
+                Networking.sendToAllClients(new CookbotNotifyClientPacket(type, pos, selected, progress, isCooking, outputItem));
+
                 //I am going to get insane
                 //worldIn.setBlockAndUpdate(player.blockPosition(), Blocks.STONE.defaultBlockState());
             }else{

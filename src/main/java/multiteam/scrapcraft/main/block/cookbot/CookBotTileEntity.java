@@ -7,9 +7,11 @@ import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
@@ -27,6 +29,7 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CookBotTileEntity extends LockableLootTileEntity implements IAnimatable, ITickableTileEntity {
@@ -165,12 +168,7 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
             outputItem = getOutputItem(selectedFoodToProgress);
             isCooking = false;
         }
-
-
-
-
     }
-
 
     public ItemStack getOutputItem(int selItem){
         ItemStack returnStack = ItemStack.EMPTY;
@@ -202,18 +200,62 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
         this.cookingProgress = progress;
         this.isCooking = isCooking;
         this.outputItem = output;
-        updateClient();
+//        updateClient();
     }
 
     public void updateClient(){
-        this.getLevel().notify();
+
     }
 
+    public boolean craft(ServerPlayerEntity player) {
+        Item[] items = new Item[4];
+        Item outputItem;
 
+        switch (selectedFood) {
+            case 1: {
+                items[0] = ModItems.WOC_MEAT.get();
+                items[1] = Items.MILK_BUCKET;
+                items[2] = Items.POTATO;
+                items[3] = ModItems.TOMATO.get();
 
+                outputItem = ModItems.PIZZA_BURGER.get();
+            }
+            case 2: {
+                items[0] = Items.CARROT;
+                items[1] = Items.BEETROOT;
+                items[2] = Items.POTATO;
+                items[3] = ModItems.TOMATO.get();
 
-    /**@Override
+                outputItem = ModItems.VEGGIE_BURGER.get();
+            }
+            case 3: {
+                items[0] = ModItems.WOC_MEAT.get();
+                items[1] = Items.MILK_BUCKET;
+                items[2] = Items.BEETROOT;
+                items[3] = ModItems.TOMATO.get();
+
+                outputItem = ModItems.REVIVAL_BAGUETTE.get();
+            }
+        }
+
+        Set<Item> remaining = new HashSet<>(Arrays.asList(items));
+        remaining.removeIf(Objects::isNull);
+        for (ItemStack stack : player.inventory.items) {
+            remaining.remove(stack.getItem());
+        }
+
+        // Remaining are also the missing items at this point.
+
+        if (remaining.size() > 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /*
+    @Override
     public AxisAlignedBB getRenderBoundingBox() {
         return null;
-    }**/
+    }*/
 }

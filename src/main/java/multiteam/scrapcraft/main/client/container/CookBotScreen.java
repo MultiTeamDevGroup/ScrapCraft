@@ -57,7 +57,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public CookBotScreen(CookBotContainer container, PlayerInventory playerInv, ITextComponent title) {
         super(container, playerInv, title);
         this.botContainer = container;
-        Networking.sendToServer(new CookbotNotifyClientPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+//        Networking.sendToServer(new CookbotNotifyClientPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
 
         int a = botContainer.cookbot.selectedFood;
         if(a == 1 || a == 2 || a == 3){
