@@ -266,23 +266,23 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             //this.botContainer.cookbot.selectedFood = selectedFood;
         }else if(isMouseInsideBox(this.mousePos, FIELD_CRAFT, getOffsetX(), getOffsetY())){
             if(this.botContainer.cookbot.outputItem == ItemStack.EMPTY && !this.botContainer.cookbot.isCooking){
-                Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                //Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, this.botContainer.cookbot.isCooking, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
                 //this.botContainer.cookbot.selectedFood = selectedFood;
-                switch (this.botContainer.cookbot.selectedFood){
+                switch (this.selectedFood){
                     case 1:
-                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.pizzaBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        Networking.sendToServer(new CookbotCommsPacket(1, this.pizzaBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
                         //this.botContainer.cookbot.cookingProgress = pizzaBurgerTime;
                         break;
                     case 2:
-                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.veggieBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        Networking.sendToServer(new CookbotCommsPacket(2, this.veggieBurgerTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
                         //this.botContainer.cookbot.cookingProgress = veggieBurgerTime;
                         break;
                     case 3:
-                        Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.revivalBaguetteTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                        Networking.sendToServer(new CookbotCommsPacket(3, this.revivalBaguetteTime, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
                         //this.botContainer.cookbot.cookingProgress = revivalBaguetteTime;
                         break;
                 }
-                Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
+                //Networking.sendToServer(new CookbotCommsPacket(this.selectedFood, this.botContainer.cookbot.cookingProgress, true, this.botContainer.cookbot.outputItem, this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos()));
                 //this.botContainer.cookbot.isCooking = true;
             }
         }else if(isMouseInsideBox(this.mousePos, FIELD_COLLECT, getOffsetX(), getOffsetY()) && canCollect){

@@ -60,15 +60,16 @@ public class CookbotCommsPacket {
             if (tile == null) {
                 throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
             }else{
-                tile.selectedFood = selected;
-                tile.cookingProgress = progress;
-                tile.isCooking = isCooking;
-                tile.outputItem = outputItem;
-                tile.setChanged();
                 //tile.save(tile.getTileData());
                 //This odes send data to the server, and the tile should recieve it but idk why it still doesnt!!! SEND HELP
-                System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
+                //I have figured that something here doesnt work. does it actually sets the values in the tile or not?
             }
+            tile.selectedFood = selected;
+            tile.cookingProgress = progress;
+            tile.isCooking = isCooking;
+            tile.outputItem = outputItem;
+            tile.setChanged();
+            System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
             //entityType.spawn(spawnWorld, null, null, pos, SpawnReason.SPAWN_EGG, true, true);
         });
         return true;
