@@ -16,6 +16,9 @@ cecb7480ce86f4e8f7b2de6f2f729086b872fb2c assets/scrapcraft/models/block/metal_1.
 7ba2e24157a5c2beee9d487f5d65ac3b31993f60 assets/scrapcraft/models/block/metal_3.json
 dde7ad9553fc576f4d8ccec8490f5e5ff47e410f assets/scrapcraft/models/block/punched_steel.json
 97f6925b0e3f0627a74ada45456e9623ccd5f0e4 assets/scrapcraft/models/block/square_mesh.json
+65120edc7af96e83a3708b11cc4d1ffdd1be5d53 assets/scrapcraft/models/item/banana.json
+a7ae1989c5e1e7cd73bcf86e1718ce3b87bfa275 assets/scrapcraft/models/item/blueberry.json
+d3a7d78c7c0972d6b06f2bfef5d02f0fc2f71673 assets/scrapcraft/models/item/broccoli.json
 49e8a69eeab9ea92c223d854e1cb882533efae2f assets/scrapcraft/models/item/concrete_1.json
 5254bf6686dc7b9acb7a11fed42de1da1266196f assets/scrapcraft/models/item/concrete_2.json
 222fd9caf572cfdaa21c258beb91d3dbdfb5c52d assets/scrapcraft/models/item/concrete_3.json
@@ -23,6 +26,8 @@ dde7ad9553fc576f4d8ccec8490f5e5ff47e410f assets/scrapcraft/models/block/punched_
 e7de9b4b92dd179bdd8f3efda72db7e6c0223afe assets/scrapcraft/models/item/metal_1.json
 ddb1dd0d0e9205256a92b5cb2244deced1625523 assets/scrapcraft/models/item/metal_2.json
 a2eea214a9703730b83f1626d5fc9c0c9ee410c3 assets/scrapcraft/models/item/metal_3.json
+0be3acf12982ffdd97f9e738e123fc849e39b7e3 assets/scrapcraft/models/item/orange.json
+390375bf2bfa5e9d33575a3a7fb213f287f325e2 assets/scrapcraft/models/item/pineapple.json
 2230e7435b92c9adb9c2ae0415357b3ab9cf4e13 assets/scrapcraft/models/item/punched_steel.json
 7b9d3c7242a02892c9f8df298b6edae43a96b311 assets/scrapcraft/models/item/square_mesh.json
 8154fc571828e48e39bdbb1b52636c6d3d097a30 assets/scrapcraft/models/item/tomato.json

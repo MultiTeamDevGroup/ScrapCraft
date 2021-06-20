@@ -2,8 +2,13 @@ package multiteam.scrapcraft.main.item;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
+import net.minecraft.item.Food;
+import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.potion.Potions;
 import net.minecraftforge.fml.RegistryObject;
 
 @SuppressWarnings("unused")
@@ -18,10 +23,16 @@ public class ModItems {
     public static final RegistryObject<Item> WOC_MEAT = Registration.ITEMS.register("woc_meat", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
 
     //Food
-    public static final RegistryObject<Item> TOMATO = Registration.ITEMS.register("tomato", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
-    public static final RegistryObject<Item> PIZZA_BURGER = Registration.ITEMS.register("pizza_burger", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
-    public static final RegistryObject<Item> VEGGIE_BURGER = Registration.ITEMS.register("veggie_burger", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
-    public static final RegistryObject<Item> REVIVAL_BAGUETTE = Registration.ITEMS.register("revival_baguette", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));
+    public static final Food COOKBOT_FOOD = (new Food.Builder().nutrition(4).saturationMod(1.2F).effect(new EffectInstance(Effects.REGENERATION, 50, 1), 1.0F).build());
+    public static final RegistryObject<Item> TOMATO = Registration.ITEMS.register("tomato", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> BANANA = Registration.ITEMS.register("banana", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> BLUEBERRY = Registration.ITEMS.register("blueberry", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> BROCCOLI = Registration.ITEMS.register("broccoli", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> ORANGE = Registration.ITEMS.register("orange", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> PINEAPPLE = Registration.ITEMS.register("pineapple", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(Foods.APPLE)));
+    public static final RegistryObject<Item> PIZZA_BURGER = Registration.ITEMS.register("pizza_burger", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(COOKBOT_FOOD)));
+    public static final RegistryObject<Item> VEGGIE_BURGER = Registration.ITEMS.register("veggie_burger", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(COOKBOT_FOOD)));
+    public static final RegistryObject<Item> REVIVAL_BAGUETTE = Registration.ITEMS.register("revival_baguette", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(COOKBOT_FOOD)));
 
     public static void register(){}
 

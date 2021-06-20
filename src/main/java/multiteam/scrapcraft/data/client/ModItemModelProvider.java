@@ -36,6 +36,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         //Regular Items
         builder(itemGenerated, "tomato");
+        builder(itemGenerated, "banana");
+        builder(itemGenerated, "blueberry");
+        builder(itemGenerated, "broccoli");
+        builder(itemGenerated, "orange");
+        builder(itemGenerated, "pineapple");
 
     }
 

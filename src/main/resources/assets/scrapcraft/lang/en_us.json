@@ -24,6 +24,11 @@
     "item.scrapcraft.revival_baguette":"Revival Baguette",
     "item.scrapcraft.woc_meat":"Woc Meat",
     "item.scrapcraft.tomato":"Tomato",
+    "item.scrapcraft.banana":"Banana",
+    "item.scrapcraft.blueberry":"Blueberry",
+    "item.scrapcraft.broccoli":"Broccoli",
+    "item.scrapcraft.orange":"Orange",
+    "item.scrapcraft.pineapple":"Pineapple",
 
     "GUI":"MOD GUI",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",
