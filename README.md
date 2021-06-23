@@ -10,7 +10,7 @@ it yourself/
 
 ScrapCraft requires the following dependencies in order to run:
 - [Geckolib](https://www.curseforge.com/minecraft/mc-mods/geckolib) (3.0.30 or higher)
-- [MultiCore-Lib](https://github.com/MultiTeamDevGroup/MultiCore-Lib) (0.0.1.2 or higher)
+- [MultiCore-Lib](https://www.curseforge.com/minecraft/mc-mods/multicorelib) (0.0.1.2 or higher)
 
 ## Community
 

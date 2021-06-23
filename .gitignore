@@ -20,6 +20,8 @@ build
 # other
 eclipse
 run
+.README.md.un~
+README.md~
 
 # Files from Forge MDK
 forge*changelog.txt
