@@ -39,7 +39,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
     }
 
     public static AttributeModifierMap.MutableAttribute createAttributes() {
-        return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double)0.5F).add(Attributes.ATTACK_DAMAGE, 5.0D);
+        return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.ATTACK_DAMAGE, 5.0D);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
 
     @Override
     public void registerAdditionalGoals() {
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.0D, 20, 15.0F));
+        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 0.0D, 30, 15.0F));
     }
 
     public void performRangedAttack(LivingEntity p_82196_1_, float p_82196_2_) {
@@ -150,6 +150,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
             this.mob.setAggressive(false);
             this.seeTime = 0;
             this.attackTime = -1;
+            this.strafingTime = -1;
             this.mob.stopUsingItem();
         }
 
@@ -205,7 +206,6 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
                 if (--this.attackTime <= 0 && this.seeTime >= -60) {
                     createProjectileEntities(this.mob.level, this.mob);
                     this.attackTime = this.attackIntervalMin;
-                    //this.mob.startUsingItem(ProjectileHelper.getWeaponHoldingHand(this.mob, Items.BOW));
                 }
 
             }
