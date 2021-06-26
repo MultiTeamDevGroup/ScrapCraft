@@ -22,7 +22,7 @@ public class SpudGun extends SpudWeapon{
     @Override
     public void createProjectileEntities(World world, PlayerEntity playerEntity) {
         WeaponProjectile weaponProjectile = new WeaponProjectile(world, playerEntity);
-        weaponProjectile.bulletDamage = 4;
+        weaponProjectile.bulletDamage = 7;
         weaponProjectile.setItem(new ItemStack(this.getAmmoItem()));
         weaponProjectile.shootFromRotation(playerEntity, playerEntity.xRot, playerEntity.yRot, 0.0F, 2.0F, 1.0F);
         world.addFreshEntity(weaponProjectile);

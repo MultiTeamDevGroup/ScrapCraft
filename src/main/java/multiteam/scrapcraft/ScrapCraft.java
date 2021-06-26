@@ -8,6 +8,7 @@ import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
 import multiteam.scrapcraft.main.client.container.CookBotScreen;
 import multiteam.scrapcraft.main.client.container.ModContainers;
+import multiteam.scrapcraft.main.entity.ModEntities;
 import multiteam.scrapcraft.main.item.ModItems;
 import multiteam.scrapcraft.main.network.Networking;
 import net.minecraft.block.Block;
@@ -50,12 +51,14 @@ public class ScrapCraft
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModEntities::clientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         Networking.registerMessages();
+        ModEntities.applyAttributes();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
