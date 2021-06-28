@@ -5,8 +5,7 @@ This mod is licensed under the GNU LGPL Version 2.1, and developed and maintaine
 
 ## Installing
 
-Due to being early in the development stages, no pre-compiled releases exist. In order to use the mod, you'll need to install a Java IDE, JDK, and compile 
-it yourself.
+The first dev build, Alpha 0.1 was released on June 23rd 2021, and can be found [here](https://github.com/LinusAWozniak/ScrapCraft/releases/tag/v0.1a). Please be aware there will be bugs, features not implemented, or not implemented in full. We are aware of all of these things, so please refrain from submitting bug reports or asking questions regarding these things.
 
 ScrapCraft requires the following dependencies in order to run:
 - [Geckolib](https://www.curseforge.com/minecraft/mc-mods/geckolib) (3.0.30 or higher)
