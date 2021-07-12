@@ -1,0 +1,24 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tape.default": {
+			"loop": true
+		},
+		"animation.tape.moving": {
+			"loop": true,
+			"animation_length": 0.607,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.625": {
+							"vector": [355, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	}
+}

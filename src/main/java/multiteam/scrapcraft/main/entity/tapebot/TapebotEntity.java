@@ -1,6 +1,8 @@
 package multiteam.scrapcraft.main.entity.tapebot;
 
 import multiteam.scrapcraft.main.entity.BotEntity;
+import multiteam.scrapcraft.main.entity.ModEntities;
+import multiteam.scrapcraft.main.entity.tape_projectile.TapeProjectileEntity;
 import multiteam.scrapcraft.main.item.WeaponProjectile;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRangedAttackMob;
@@ -9,10 +11,8 @@ import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.DamageSource;
@@ -209,6 +209,10 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
                 }
 
             }
+        }
+
+        public void createProjectile(World world, LivingEntity entity) {
+            
         }
 
         public void createProjectileEntities(World world, LivingEntity entity) {
