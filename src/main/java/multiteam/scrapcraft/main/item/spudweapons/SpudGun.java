@@ -1,5 +1,6 @@
-package multiteam.scrapcraft.main.item;
+package multiteam.scrapcraft.main.item.spudweapons;
 
+import multiteam.scrapcraft.main.item.WeaponProjectile;
 import multiteam.scrapcraft.main.sound.ModSound;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -12,6 +13,11 @@ public class SpudGun extends SpudWeapon{
 
     public SpudGun(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public int getCooldown() {
+        return 5;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package multiteam.scrapcraft.main.item;
+package multiteam.scrapcraft.main.item.spudweapons;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.LivingEntity;
@@ -51,6 +51,7 @@ public abstract class SpudWeapon extends BowItem {
                             playerEntity.inventory.removeItem(ammoStack);
                         }
                     }
+                    playerEntity.getCooldowns().addCooldown(this, this.getCooldown());
                 }
             }else{
                 worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootFail(), SoundCategory.PLAYERS, 1.0F, 1.0F);
@@ -72,6 +73,8 @@ public abstract class SpudWeapon extends BowItem {
     public Predicate<ItemStack> getAllSupportedProjectiles() {
         return (stack) -> stack.getItem() == this.getAmmoItem();
     }
+
+    public abstract int getCooldown();
 
     public abstract Item getAmmoItem();
 

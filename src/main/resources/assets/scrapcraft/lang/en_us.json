@@ -19,6 +19,7 @@
     "ITEMS":"MOD ITEMS",
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
     "item.scrapcraft.spud_gun":"Spud Gun",
+    "item.scrapcraft.spud_shotgun":"Spud Shotgun",
     "item.scrapcraft.glue":"Glue",
     "item.scrapcraft.pizza_burger":"Pizza Burger",
     "item.scrapcraft.veggie_burger":"Veggie Burger",
@@ -31,7 +32,7 @@
     "item.scrapcraft.orange":"Orange",
     "item.scrapcraft.pineapple":"Pineapple",
 
-    "ITEMS":"MOD ITEMS",
+    "ENTITIES":"MOD ENTITIES",
     "entityy.scrapcraft.tapebotentity":"Tape Bot",
 
     "GUI":"MOD GUI",
