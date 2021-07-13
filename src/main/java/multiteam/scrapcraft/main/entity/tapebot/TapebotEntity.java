@@ -222,7 +222,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
         public void createProjectileEntities(World world, LivingEntity entity) {
             WeaponProjectile weaponProjectile = new WeaponProjectile(world, entity);
             weaponProjectile.bulletDamage = 11;
-            weaponProjectile.setItem(new ItemStack(Blocks.YELLOW_WOOL.asItem()));
+            weaponProjectile.setItem(new ItemStack(Blocks.YELLOW_WOOL.asItem())); //this is just a placehold still
             weaponProjectile.shootFromRotation(entity, entity.xRot, entity.yRot, 0.0F, 2.0F, 1.0F);
             world.addFreshEntity(weaponProjectile);
         }

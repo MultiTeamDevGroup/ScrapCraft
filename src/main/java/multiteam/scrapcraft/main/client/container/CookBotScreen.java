@@ -167,7 +167,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
 
         //Render Cookbot model - needs rework.
         this.minecraft.getItemRenderer().renderGuiItem(new ItemStack(ModBlocks.COOKBOT_BLOCK.get().asItem()), offsetX, offsetY);
-
+        //this.minecraft.getEntityRenderDispatcher().render();
 
         //Field-Hover and click detection for selecting
         if(isMouseInsideBox(this.mousePos, FIELD_1, offsetX, offsetY)){

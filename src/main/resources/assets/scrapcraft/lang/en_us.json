@@ -14,6 +14,7 @@
     "block.scrapcraft.square_mesh":"Square Mesh Block",
     "block.scrapcraft.insulation":"Insulation Block",
     "block.scrapcraft.canister_block_small":"Small Explosive Canister",
+    "block.scrapcraft.tapebot_capsule_block":"Tapebot Capsule",
 
     "ITEMS":"MOD ITEMS",
     "item.scrapcraft.sledge_hammer":"Sledge Hammer",
@@ -29,6 +30,9 @@
     "item.scrapcraft.broccoli":"Broccoli",
     "item.scrapcraft.orange":"Orange",
     "item.scrapcraft.pineapple":"Pineapple",
+
+    "ITEMS":"MOD ITEMS",
+    "entityy.scrapcraft.tapebotentity":"Tape Bot",
 
     "GUI":"MOD GUI",
     "itemGroup.scrapcraft_machines": "ScrapCraft - Machines",
