@@ -77,6 +77,11 @@ public class BotCapsuleBlock extends Block {
     }
 
     @Override
+    public void onRemove(BlockState p_196243_1_, World p_196243_2_, BlockPos p_196243_3_, BlockState p_196243_4_, boolean p_196243_5_) {
+        super.onRemove(p_196243_1_, p_196243_2_, p_196243_3_, p_196243_4_, p_196243_5_);
+    }
+
+    @Override
     public void playerDestroy(World worldIn, PlayerEntity playerEntity, BlockPos pos, BlockState state, @Nullable TileEntity tile, ItemStack stack) {
         Entity entity = null;
         if(state == ModBlocks.TAPEBOT_CAPSULE_BLOCK.get().defaultBlockState()){

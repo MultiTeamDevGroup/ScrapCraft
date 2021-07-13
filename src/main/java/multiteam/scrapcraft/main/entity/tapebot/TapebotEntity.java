@@ -43,6 +43,14 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
         return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.ATTACK_DAMAGE, 5.0D);
     }
 
+    public boolean canBeCollidedWith() {
+        return true;
+    }
+
+    public boolean isPushable() {
+        return true;
+    }
+
     @Override
     public SoundCategory getSoundSource() {
         return SoundCategory.HOSTILE;
