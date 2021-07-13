@@ -11,10 +11,7 @@ import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotBlock;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotTileEntity;
 import multiteam.scrapcraft.main.block.signs.SignBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
@@ -47,6 +44,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CANISTER_BLOCK_SMALL = registerWithItem("canister_block_small", () -> new CanisterBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_RED).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
     public static final RegistryObject<TileEntityType<CanisterTileEntity>> CANISTER_TILE_SMALL = Registration.TILE_ENTITY_TYPES.register("canister_tile_small", () -> TileEntityType.Builder.of(CanisterTileEntity::new, CANISTER_BLOCK_SMALL.get()).build(null));
     public static final RegistryObject<Block> ARROW_SIGN = registerWithItem("arrow_sign", () -> new SignBlock(AbstractBlock.Properties.of(Material.METAL).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
+    public static final RegistryObject<Block> ARROW_LIGHT_BLOCK = registerWithItem("arrow_light_block", () -> new RedstoneLampBlock(AbstractBlock.Properties.of(Material.METAL).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
 
     //Capsules
     public static final RegistryObject<Block> TAPEBOT_CAPSULE_BLOCK = registerWithItem("tapebot_capsule_block", () -> new BotCapsuleBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE).strength(0,0).harvestLevel(0).sound(SoundType.GLASS)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
