@@ -27,5 +27,17 @@ public class ModBlockStateProvider  extends BlockStateProvider {
         simpleBlock(ModBlocks.INSULATION.get());
         simpleBlock(ModBlocks.PUNCHED_STEEL.get());
         simpleBlock(ModBlocks.SQUARE_MESH.get());
+        simpleBlock(ModBlocks.BARRIER_BLOCK.get());
+        simpleBlock(ModBlocks.PATH_LIGHT.get());
+        simpleBlock(ModBlocks.CONCRETE_SLAB.get());
+        simpleBlock(ModBlocks.RUSTED_METAL.get());
+        simpleBlock(ModBlocks.NET_BLOCK.get());
+        simpleBlock(ModBlocks.THICK_NET_BLOCK.get());
+        simpleBlock(ModBlocks.STRIPED_NET_BLOCK.get());
+        simpleBlock(ModBlocks.WORN_METAL.get());
+        simpleBlock(ModBlocks.CHALLANGE_BLOCK_1.get());
+        simpleBlock(ModBlocks.CHALLANGE_BLOCK_2.get());
+        simpleBlock(ModBlocks.ALUMINIUM.get());
+        simpleBlock(ModBlocks.ARROW_LIGHT_BLOCK.get());
     }
 }

@@ -76,6 +76,9 @@ public class ScrapCraft
         RenderTypeLookup.setRenderLayer(ModBlocks.TAPEBOT_CAPSULE_BLOCK.get(), RenderType.translucent());
         RenderTypeLookup.setRenderLayer(ModBlocks.SQUARE_MESH.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.PUNCHED_STEEL.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.NET_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.THICK_NET_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.STRIPED_NET_BLOCK.get(), RenderType.cutoutMipped());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

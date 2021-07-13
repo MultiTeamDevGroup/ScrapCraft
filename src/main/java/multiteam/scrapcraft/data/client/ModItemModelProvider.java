@@ -30,6 +30,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("insulation", modLoc("block/insulation"));
         withExistingParent("punched_steel", modLoc("block/punched_steel"));
         withExistingParent("square_mesh", modLoc("block/square_mesh"));
+        withExistingParent("barrier_block", modLoc("block/barrier_block"));
+        withExistingParent("path_light", modLoc("block/path_light"));
+        withExistingParent("concrete_slab", modLoc("block/concrete_slab"));
+        withExistingParent("rusted_metal", modLoc("block/rusted_metal"));
+        withExistingParent("net_block", modLoc("block/net_block"));
+        withExistingParent("thick_net_block", modLoc("block/thick_net_block"));
+        withExistingParent("striped_net_block", modLoc("block/striped_net_block"));
+        withExistingParent("worn_metal", modLoc("block/worn_metal"));
+        withExistingParent("challenge_block_1", modLoc("block/challenge_block_1"));
+        withExistingParent("challenge_block_2", modLoc("block/challenge_block_2"));
+        withExistingParent("aluminium", modLoc("block/aluminium"));
+        withExistingParent("arrow_light_block", modLoc("block/arrow_light_block"));
 
         //Items
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));

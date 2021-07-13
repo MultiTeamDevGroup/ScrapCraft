@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "scrapcraft:block/arrow_light_block"
+    }
+  }
+}
