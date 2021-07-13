@@ -103,14 +103,14 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.16'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.32'
 
     compileOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.4.88:api")
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.5:7.6.4.88")
 
     compile fg.deobf("multiteam.multicorelib:multicore_lib:1.16.5-0.0.1.4")
 
-    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.30')
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.16.5:3.0.41')
 
 }
 
@@ -159,5 +159,5 @@ repositories {
     }
     maven { url "https://www.cursemaven.com" }
     maven { url "https://github.com/MultiTeamDevGroup/MultiTeam-Maven/raw/main/" }
-    maven { url 'https://repo.repsy.io/mvn/gandiber/geckolib' }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }

@@ -4,6 +4,7 @@ import multiteam.scrapcraft.main.entity.BotEntity;
 import multiteam.scrapcraft.main.entity.ModEntities;
 import multiteam.scrapcraft.main.entity.tape_projectile.TapeProjectileEntity;
 import multiteam.scrapcraft.main.item.WeaponProjectile;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.LivingEntity;
@@ -212,13 +213,16 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
         }
 
         public void createProjectile(World world, LivingEntity entity) {
-            
+            TapeProjectileEntity projectileEntity = new TapeProjectileEntity(ModEntities.TAPE_PROJECTILE.get(), world);
+            world.addFreshEntity(projectileEntity);
+            projectileEntity.setPos(entity.getX(), entity.getY(), entity.getZ());
+            projectileEntity.shootFromRotation(entity, entity.xRot, entity.yRot, 0.0F, 2.0F, 1.0F);
         }
 
         public void createProjectileEntities(World world, LivingEntity entity) {
             WeaponProjectile weaponProjectile = new WeaponProjectile(world, entity);
             weaponProjectile.bulletDamage = 11;
-            weaponProjectile.setItem(new ItemStack(Items.POTATO));
+            weaponProjectile.setItem(new ItemStack(Blocks.YELLOW_WOOL.asItem()));
             weaponProjectile.shootFromRotation(entity, entity.xRot, entity.yRot, 0.0F, 2.0F, 1.0F);
             world.addFreshEntity(weaponProjectile);
         }
