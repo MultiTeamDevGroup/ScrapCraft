@@ -25,7 +25,6 @@ public class CookbotCommsPacket {
     private final BlockPos pos;
 
     public CookbotCommsPacket(PacketBuffer buf) {
-        //id = buf.readResourceLocation();
         this.selected = buf.readInt();
         this.progress = buf.readInt();
         this.isCooking = buf.readBoolean();
@@ -35,7 +34,6 @@ public class CookbotCommsPacket {
     }
 
     public CookbotCommsPacket(int selected, int progress, boolean isCooking, ItemStack outputItem, RegistryKey<World> type, BlockPos pos) {
-        //this.id = id;
         this.selected = selected;
         this.progress = progress;
         this.isCooking = isCooking;
@@ -45,7 +43,6 @@ public class CookbotCommsPacket {
     }
 
     public void toBytes(PacketBuffer buf) {
-        //buf.writeResourceLocation(id);
         buf.writeInt(selected);
         buf.writeInt(progress);
         buf.writeBoolean(isCooking);
@@ -65,12 +62,7 @@ public class CookbotCommsPacket {
             if(tileEntity instanceof CookBotTileEntity){
                 CookBotTileEntity tile = (CookBotTileEntity) tileEntity;
                 tile.setValues(this.selected, this.progress, this.isCooking, this.outputItem);
-                System.out.println("so do i: " + tile.selectedFood + " - " + tile.cookingProgress + " - " + tile.isCooking + " - " + tile.outputItem);
-
                 Networking.sendToAllClients(new CookbotNotifyClientPacket(type, pos, selected, progress, isCooking, outputItem));
-
-                //I am going to get insane
-                //worldIn.setBlockAndUpdate(player.blockPosition(), Blocks.STONE.defaultBlockState());
             }else{
                 throw new IllegalStateException("This tile is not a cookbot!");
             }

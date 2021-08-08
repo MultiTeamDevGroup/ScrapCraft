@@ -4,6 +4,7 @@ import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotNotifyClientPacket;
+import multiteam.scrapcraft.main.network.packets.CookbotRemoveIngredientsPacket;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
@@ -25,9 +26,9 @@ public class Networking {
 
         INSTANCE.messageBuilder(CookbotCommsPacket.class, nextID()).encoder(CookbotCommsPacket::toBytes).decoder(CookbotCommsPacket::new).consumer(CookbotCommsPacket::handleComms).add();
         INSTANCE.messageBuilder(CookbotGiveResultsPacket.class, nextID()).encoder(CookbotGiveResultsPacket::toBytes).decoder(CookbotGiveResultsPacket::new).consumer(CookbotGiveResultsPacket::handle).add();
+        INSTANCE.messageBuilder(CookbotRemoveIngredientsPacket.class, nextID()).encoder(CookbotRemoveIngredientsPacket::toBytes).decoder(CookbotRemoveIngredientsPacket::new).consumer(CookbotRemoveIngredientsPacket::handle).add();
         INSTANCE.messageBuilder(CookbotNotifyClientPacket.class, nextID()).encoder(CookbotNotifyClientPacket::toBytes).decoder(CookbotNotifyClientPacket::new).consumer(CookbotNotifyClientPacket::handle).add();
 
-        //INSTANCE.messageBuilder(PacketSpawn.class, nextID()).encoder(PacketSpawn::toBytes).decoder(PacketSpawn::new).consumer(PacketSpawn::handle).add();
     }
 
     public static void sendToAllClients(Object packet) {
