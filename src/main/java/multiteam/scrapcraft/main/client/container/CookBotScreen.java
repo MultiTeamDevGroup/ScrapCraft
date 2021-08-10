@@ -324,19 +324,19 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                 switch (this.selectedFood){
                     case 1:
                         for(int i = 0; i < pizzaBurgerRecipe.length; i++){
-                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos(), pizzaBurgerRecipe[i], pizzaBurgerRecipeCounts[i]));
+                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(pizzaBurgerRecipe[i], pizzaBurgerRecipeCounts[i]));
                         }
                         Networking.sendToServer(new CookbotCommsPacket(1, this.pizzaBurgerTime, true, this.botContainer.cookbot.outputItem, Objects.requireNonNull(this.botContainer.cookbot.getLevel()).dimension(), this.botContainer.cookbot.getBlockPos()));
                         break;
                     case 2:
                         for(int i = 0; i < veggieBurgerRecipe.length; i++){
-                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos(), veggieBurgerRecipe[i], veggieBurgerRecipeCounts[i]));
+                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(veggieBurgerRecipe[i], veggieBurgerRecipeCounts[i]));
                         }
                         Networking.sendToServer(new CookbotCommsPacket(2, this.veggieBurgerTime, true, this.botContainer.cookbot.outputItem, Objects.requireNonNull(this.botContainer.cookbot.getLevel()).dimension(), this.botContainer.cookbot.getBlockPos()));
                         break;
                     case 3:
                         for(int i = 0; i < revivalBaguetteRecipe.length; i++){
-                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(this.botContainer.cookbot.getLevel().dimension(), this.botContainer.cookbot.getBlockPos(), revivalBaguetteRecipe[i], revivalBaguetteRecipeCounts[i]));
+                            Networking.sendToServer(new CookbotRemoveIngredientsPacket(revivalBaguetteRecipe[i], revivalBaguetteRecipeCounts[i]));
                         }
                         Networking.sendToServer(new CookbotCommsPacket(3, this.revivalBaguetteTime, true, this.botContainer.cookbot.outputItem, Objects.requireNonNull(this.botContainer.cookbot.getLevel()).dimension(), this.botContainer.cookbot.getBlockPos()));
                         break;

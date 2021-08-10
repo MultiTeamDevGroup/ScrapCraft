@@ -18,42 +18,28 @@ import java.util.function.Supplier;
 
 public class CookbotRemoveIngredientsPacket {
 
-    private final RegistryKey<World> type;
-    private final BlockPos pos;
     private final ItemStack stackToRemove;
     private final int amountToRemoveFromStack;
 
     public CookbotRemoveIngredientsPacket(PacketBuffer buf) {
-        type = RegistryKey.create(Registry.DIMENSION_REGISTRY, buf.readResourceLocation());
-        pos = buf.readBlockPos();
         stackToRemove = buf.readItem();
         amountToRemoveFromStack = buf.readInt();
     }
 
-    public CookbotRemoveIngredientsPacket(RegistryKey<World> type, BlockPos pos, ItemStack stackToRemove, int amountToRemoveFromStack) {
-        this.type = type;
-        this.pos = pos;
+    public CookbotRemoveIngredientsPacket( ItemStack stackToRemove, int amountToRemoveFromStack) {
         this.stackToRemove = stackToRemove;
         this.amountToRemoveFromStack = amountToRemoveFromStack;
     }
 
     public void toBytes(PacketBuffer buf) {
-        buf.writeResourceLocation(type.location());
-        buf.writeBlockPos(pos);
         buf.writeItemStack(stackToRemove,true);
         buf.writeInt(amountToRemoveFromStack);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ServerWorld worldIn = Objects.requireNonNull(ctx.get().getSender()).level.getServer().getLevel(type);
-            CookBotTileEntity tile = (CookBotTileEntity) worldIn.getBlockEntity(pos);
-            if (tile == null) {
-                throw new IllegalStateException("CookBotTileEntity was null; Its either been destroyed or went missing!");
-            }else{
-                PlayerInventory inventory = Objects.requireNonNull(ctx.get().getSender()).connection.player.inventory;
-                inventory.items.get(inventory.findSlotMatchingItem(stackToRemove)).shrink(amountToRemoveFromStack);
-            }
+            PlayerInventory inventory = Objects.requireNonNull(ctx.get().getSender()).connection.player.inventory;
+            inventory.items.get(inventory.findSlotMatchingItem(stackToRemove)).shrink(amountToRemoveFromStack);
         });
         return true;
     }
