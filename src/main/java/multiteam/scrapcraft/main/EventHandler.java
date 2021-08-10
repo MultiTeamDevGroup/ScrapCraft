@@ -19,15 +19,37 @@ import java.util.Objects;
 public class EventHandler {
 
     private static final ResourceLocation COOKBOT_GUI = new ResourceLocation(ScrapCraft.MOD_ID, "textures/gui/cookbot_menu.png");
+    private static final ResourceLocation SOUL_PARTICLE = new ResourceLocation("minecraft", "textures/particle/soul_9.png");
 
     @SubscribeEvent
     public static void renderGameUIParticle(RenderGameOverlayEvent event){
         MatrixStack matrixStack = event.getMatrixStack();
         Minecraft mc = Minecraft.getInstance();
-        Objects.requireNonNull(mc).textureManager.bind(COOKBOT_GUI);
-        System.out.println("partial ticks: " + event.getPartialTicks() + "; sin: " + Math.sin(event.getPartialTicks()) + "; times 2: " + (Math.sin(event.getPartialTicks()))*10 + "; to int: " + (int)(Math.sin(event.getPartialTicks()))*10);
-        renderParticle(matrixStack, 0, (int)(Math.sin(event.getPartialTicks()))*10, new UIParticle(COOKBOT_GUI, 512, 512, new Vector4f(207.0F, 332.0F, 305, 17)));
-        //this.font.draw(matrixStack, "WE ARE RENDERING TEXT ON SCREEEEEEN LESS GOOOO", (float)0, (float)0, 16777215); how the fuck do i write text bruh
+
+        matrixStack.pushPose();
+
+        //Objects.requireNonNull(mc).textureManager.bind(COOKBOT_GUI);
+        //System.out.println("partial ticks: " + event.getPartialTicks() + "; sin: " + Math.sin(event.getPartialTicks()) + "; times 2: " + (Math.sin(event.getPartialTicks()))*10 + "; to int: " + (int)Math.round((Math.sin(event.getPartialTicks()))*10));
+        //UIParticle collectButton = new UIParticle(COOKBOT_GUI, 512, 512, new Vector4f(207.0F, 332.0F, 305, 17));
+        //renderParticle(matrixStack, 0, (int)Math.round((Math.sin(event.getPartialTicks()))*10), collectButton);
+
+        /**RenderSystem.pushMatrix();
+        FontRenderer fontrenderer = mc.gui.getFont();
+        mc.getProfiler().push("randomguitext");
+        RenderSystem.enableBlend();
+        RenderSystem.enableAlphaTest();
+        fontrenderer.draw(matrixStack, "This text is rendered by some magic. but why is the game world not visible???", (float)10, (float)40, 16777215); //this makes the screen go black
+        RenderSystem.defaultBlendFunc();
+        mc.getProfiler().pop();
+        RenderSystem.popMatrix();**/
+
+        UIParticle soulParticle = new UIParticle(SOUL_PARTICLE, 16, 16, new Vector4f(0F, 0F, 16, 16));
+        Objects.requireNonNull(mc).textureManager.bind(soulParticle.getTexture());
+
+        matrixStack.scale(2f, 2f, 2f);
+        renderParticle(matrixStack, ((event.getWindow().getGuiScaledWidth()/2)-32)/2, ((event.getWindow().getGuiScaledHeight()/2)-32)/2, soulParticle);
+
+        matrixStack.popPose();
     }
 
     public static void renderParticle(MatrixStack matrixStack, int x, int y, UIParticle uiParticle){
