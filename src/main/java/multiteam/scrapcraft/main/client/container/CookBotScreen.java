@@ -43,6 +43,9 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public static final TranslationTextComponent COOKBOT_LABEL_PIZZABURGER = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.pizza_burger_name");
     public static final TranslationTextComponent COOKBOT_LABEL_VEGGIEBURGER = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.veggie_burger_name");
     public static final TranslationTextComponent COOKBOT_LABEL_REVIVALBAGUETTE = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.revival_baguette_name");
+    public static final TranslationTextComponent COOKBOT_LABEL_PIZZABURGER_DESCRIPTION = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.pizza_burger_description");
+    public static final TranslationTextComponent COOKBOT_LABEL_VEGGIEBURGER_DESCRIPTION = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.veggie_burger_description");
+    public static final TranslationTextComponent COOKBOT_LABEL_REVIVALBAGUETTE_DESCRIPTION = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.revival_baguette_description");
     public static final TranslationTextComponent COOKBOT_LABEL_DESCRIPTION_LABEL = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.description_label");
     public static final TranslationTextComponent COOKBOT_LABEL_INGREDIENTS_LABEL = new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot.ingredients_label");
     public static final Vector4f FIELD_1 = new Vector4f(7.0f,85.0f,60.0f,116.0f);
@@ -122,16 +125,28 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                 //Pizza Burger
                 selectField(this.selectedFood, matrixStack, offsetX, offsetY);
                 renderIngredients(pizzaBurgerRecipe, pizzaBurgerRecipeCounts, offsetX, offsetY, matrixStack);
+                matrixStack.pushPose();
+                matrixStack.scale(0.8f,0.8f,0.8f);
+                this.font.draw(matrixStack, COOKBOT_LABEL_PIZZABURGER_DESCRIPTION, (float)(185+offsetX)*1.25f, (float)(102+offsetY)*1.25f, 16777215);
+                matrixStack.popPose();
                 break;
             case 2 :
                 //Veggie Burger
                 selectField(this.selectedFood, matrixStack, offsetX, offsetY);
                 renderIngredients(veggieBurgerRecipe, veggieBurgerRecipeCounts, offsetX, offsetY, matrixStack);
+                matrixStack.pushPose();
+                matrixStack.scale(0.8f,0.8f,0.8f);
+                this.font.draw(matrixStack, COOKBOT_LABEL_VEGGIEBURGER_DESCRIPTION, (float)(185+offsetX)*1.25f, (float)(102+offsetY)*1.25f, 16777215);
+                matrixStack.popPose();
                 break;
             case 3 :
                 //revival Baguette
                 selectField(this.selectedFood, matrixStack, offsetX, offsetY);
                 renderIngredients(revivalBaguetteRecipe, revivalBaguetteRecipeCounts, offsetX, offsetY, matrixStack);
+                matrixStack.pushPose();
+                matrixStack.scale(0.8f,0.8f,0.8f);
+                this.font.draw(matrixStack, COOKBOT_LABEL_REVIVALBAGUETTE_DESCRIPTION, (float)(185+offsetX)*1.25f, (float)(102+offsetY)*1.25f, 16777215);
+                matrixStack.popPose();
                 break;
         }
 
