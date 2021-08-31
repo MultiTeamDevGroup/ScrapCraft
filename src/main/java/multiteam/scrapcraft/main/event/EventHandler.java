@@ -27,8 +27,8 @@ public class EventHandler {
         MatrixStack matrixStack = event.getMatrixStack();
         Minecraft mc = Minecraft.getInstance();
 
-        MinecraftForge.EVENT_BUS.post(new RenderHUDParticleEvent(matrixStack));
 
+        MinecraftForge.EVENT_BUS.post(new RenderHUDParticleEvent(matrixStack, event.getPartialTicks(), event.getWindow()));
         //Objects.requireNonNull(mc).textureManager.bind(COOKBOT_GUI);
         //System.out.println("partial ticks: " + event.getPartialTicks() + "; sin: " + Math.sin(event.getPartialTicks()) + "; times 2: " + (Math.sin(event.getPartialTicks()))*10 + "; to int: " + (int)Math.round((Math.sin(event.getPartialTicks()))*10));
         //UIParticle collectButton = new UIParticle(COOKBOT_GUI, 512, 512, new Vector4f(207.0F, 332.0F, 305, 17));
