@@ -2,6 +2,7 @@ package multiteam.scrapcraft.main.client.container;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
 import mcp.MethodsReturnNonnullByDefault;
 import multiteam.multicore_lib.setup.utilities.ItemManagementTool;
 import multiteam.multicore_lib.setup.utilities.MathF;
@@ -12,7 +13,9 @@ import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotRemoveIngredientsPacket;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.player.PlayerInventory;
@@ -157,13 +160,16 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         matrixStack.scale(4.0f,4.0f,4.0f);
         matrixStack.mulPose(Vector3f.YP.rotationDegrees(degrees++ / 2));
         //HOW THE FUCK AM I SUPPOSED TO GET THE IVERTEXBUILDER IF THERE IS NO IVERTEXBUILDER IN HERE BRUUUUHHH
-        //renderItem(this.botContainer.cookbot.getOutputItem(this.botContainer.cookbot.selectedFood), partialTicks, matrixStack, IVERTEXBUILDER, 10);
+        Tessellator tessellator = Tessellator.getInstance();
+        IVertexBuilder ivbuilder = tessellator.getBuilder().getVertexBuilder();
+        BufferBuilder bbuilder = tessellator.getBuilder();
+        //renderItem(this.botContainer.cookbot.getOutputItem(this.botContainer.cookbot.selectedFood), partialTicks, matrixStack, ivbuilder, 10);
         //this.minecraft.getItemRenderer().renderGuiItem(this.botContainer.cookbot.getOutputItem(this.botContainer.cookbot.selectedFood), 80+offsetX, 10+offsetY);
         matrixStack.popPose();
 
         //Render Cookbot model
         matrixStack.pushPose();
-        //this.minecraft.getEntityRenderDispatcher().render(this.botContainer.cookbot, 1d, 1d, 1d, 10f, 10f, matrixStack, IRENDERTYPEBUFFER,10);
+        // no. pablo. this.minecraft.getEntityRenderDispatcher().render(this.botContainer.cookbot.getTileEntity(), 1d, 1d, 1d, 10f, 10f, matrixStack, ivbuilder,10);
         matrixStack.popPose();
 
         //Field-Hover and click detection for selecting
