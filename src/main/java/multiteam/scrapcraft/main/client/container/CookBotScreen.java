@@ -3,34 +3,28 @@ package multiteam.scrapcraft.main.client.container;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mcp.MethodsReturnNonnullByDefault;
+import multiteam.multicore_lib.setup.utilities.ItemManagementTool;
 import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.ScrapCraft;
-import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.item.ModItems;
 import multiteam.scrapcraft.main.network.Networking;
 import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotRemoveIngredientsPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.util.math.vector.Vector4f;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -235,18 +229,6 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         return false;
     }
 
-    //This also should go into MultiCoreLib...
-    public int getCountOfItemInInventory(PlayerInventory inv, Item itemToCount){
-        int count = 0;
-        for (int i = 0; i < inv.getContainerSize(); i++){
-            ItemStack currentStack = inv.getItem(i);
-            if(currentStack.getItem() == itemToCount){
-                count+=currentStack.getCount();
-            }
-        }
-        return count;
-    }
-
     public void selectField(int fieldId, MatrixStack matrixStack, int offsetX, int offsetY){
         switch (fieldId){
             case 1 :
@@ -284,7 +266,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                 int color = 16777215; //default white
                 int a = 0;
                 if(this.inventory.player.inventory.contains(dispStack)){
-                    a = getCountOfItemInInventory(this.inventory.player.inventory, dispStack.getItem());
+                    a = ItemManagementTool.getCountOfItemInInventory_(this.inventory.player.inventory, dispStack.getItem());
                 }
                 if(a >= recipeCounts[i]){
                     color = 13628459; //CFF42B
@@ -392,7 +374,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             case 1:
                 for (int i = 0; i < pizzaBurgerRecipe.length; i ++){
                     if(this.inventory.player.inventory.items.contains(pizzaBurgerRecipe[i])){
-                        int a = getCountOfItemInInventory(this.inventory.player.inventory, pizzaBurgerRecipe[i].getItem());
+                        int a = ItemManagementTool.getCountOfItemInInventory_(this.inventory.player.inventory, pizzaBurgerRecipe[i].getItem());
                         if(a < pizzaBurgerRecipeCounts[i]){
                             result = false;
                         }
@@ -402,7 +384,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             case 2:
                 for (int i = 0; i < veggieBurgerRecipe.length; i ++){
                     if(!this.inventory.player.inventory.items.contains(veggieBurgerRecipe[i])){
-                        int a = getCountOfItemInInventory(this.inventory.player.inventory, veggieBurgerRecipe[i].getItem());
+                        int a = ItemManagementTool.getCountOfItemInInventory_(this.inventory.player.inventory, veggieBurgerRecipe[i].getItem());
                         if(a < veggieBurgerRecipeCounts[i]){
                             result = false;
                         }
@@ -412,7 +394,7 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
             case 3:
                 for (int i = 0; i < revivalBaguetteRecipe.length; i ++){
                     if(!this.inventory.player.inventory.items.contains(revivalBaguetteRecipe[i])){
-                        int a = getCountOfItemInInventory(this.inventory.player.inventory, revivalBaguetteRecipe[i].getItem());
+                        int a = ItemManagementTool.getCountOfItemInInventory_(this.inventory.player.inventory, revivalBaguetteRecipe[i].getItem());
                         if(a < revivalBaguetteRecipeCounts[i]){
                             result = false;
                         }
