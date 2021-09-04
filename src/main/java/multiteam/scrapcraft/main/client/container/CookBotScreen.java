@@ -11,8 +11,13 @@ import multiteam.scrapcraft.main.network.Networking;
 import multiteam.scrapcraft.main.network.packets.CookbotCommsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotGiveResultsPacket;
 import multiteam.scrapcraft.main.network.packets.CookbotRemoveIngredientsPacket;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,6 +25,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector2f;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.util.math.vector.Vector4f;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -70,10 +76,12 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
     public Vector2f mousePos;
     public CookBotContainer botContainer;
     public boolean canCollect = false;
+    public float degrees;
 
     public CookBotScreen(CookBotContainer container, PlayerInventory playerInv, ITextComponent title) {
         super(container, playerInv, title);
         this.botContainer = container;
+        degrees = 0f;
 
         int a = botContainer.cookbot.selectedFood;
         if(a == 1 || a == 2 || a == 3){
@@ -150,13 +158,19 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
                 break;
         }
 
+        //Render selected food preview
+        matrixStack.pushPose();
+        matrixStack.scale(4.0f,4.0f,4.0f);
+        matrixStack.mulPose(Vector3f.YP.rotationDegrees(degrees++ / 2));
+        //HOW THE FUCK AM I SUPPOSED TO GET THE IVERTEXBUILDER IF THERE IS NO IVERTEXBUILDER IN HERE BRUUUUHHH
+        //renderItem(this.botContainer.cookbot.getOutputItem(this.botContainer.cookbot.selectedFood), partialTicks, matrixStack, IVERTEXBUILDER, 10);
+        //this.minecraft.getItemRenderer().renderGuiItem(this.botContainer.cookbot.getOutputItem(this.botContainer.cookbot.selectedFood), 80+offsetX, 10+offsetY);
+        matrixStack.popPose();
 
-        //Render Cookbot model - needs rework.
-        //this.minecraft.getItemRenderer().renderGuiItem(new ItemStack(ModBlocks.COOKBOT_BLOCK.get().asItem()), offsetX, offsetY);
-        //this.minecraft.getEntityRenderDispatcher().render();
-        //this.minecraft.getBlockRenderer().renderBlock(ModBlocks.COOKBOT_BLOCK.get().defaultBlockState(), matrixStack, ,offsetX, offsetY, ); //where rendertypebuffer?; where IModelData?
-        //this.minecraft.getBlockRenderer().getBlockModel();
-        this.minecraft.getBlockRenderer().getBlockModel(ModBlocks.ARROW_LIGHT_BLOCK.get().defaultBlockState());
+        //Render Cookbot model
+        matrixStack.pushPose();
+        //this.minecraft.getEntityRenderDispatcher().render(this.botContainer.cookbot, 1d, 1d, 1d, 10f, 10f, matrixStack, IRENDERTYPEBUFFER,10);
+        matrixStack.popPose();
 
         //Field-Hover and click detection for selecting
         if(isMouseInsideBox(this.mousePos, FIELD_1, offsetX, offsetY)){
@@ -409,7 +423,6 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         if(this.inventory.player.isCreative()){
             result = true;
         }
-        System.out.println("Trying to craft food with the id of " + foodId + " turned out to be " + result);
         return result;
     }
 
@@ -426,5 +439,9 @@ public class CookBotScreen extends ContainerScreen<CookBotContainer> {
         return true;
     }
 
+    public void renderItem(ItemStack stack, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn,
+                           int combinedLightIn) {
+        this.minecraft.getItemRenderer().renderStatic(stack, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, OverlayTexture.NO_OVERLAY, matrixStackIn, bufferIn);
+    }
 
 }
