@@ -39,5 +39,6 @@ public class ModBlockStateProvider  extends BlockStateProvider {
         simpleBlock(ModBlocks.CHALLANGE_BLOCK_2.get());
         simpleBlock(ModBlocks.ALUMINIUM.get());
         simpleBlock(ModBlocks.ARROW_LIGHT_BLOCK.get());
+        simpleBlock(ModBlocks.TILES_BLOCK.get());
     }
 }

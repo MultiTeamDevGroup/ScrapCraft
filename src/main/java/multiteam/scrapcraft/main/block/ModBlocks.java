@@ -56,6 +56,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHALLANGE_BLOCK_1 = registerWithItem("challenge_block_1", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.STONE)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
     public static final RegistryObject<Block> CHALLANGE_BLOCK_2 = registerWithItem("challenge_block_2", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.STONE)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
     public static final RegistryObject<Block> ALUMINIUM = registerWithItem("aluminium", () -> new Block(AbstractBlock.Properties.of(Material.METAL).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.METAL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
+    public static final RegistryObject<Block> TILES_BLOCK = registerWithItem("tiles_block", () -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(4.0f,5.0f).harvestLevel(1).sound(SoundType.STONE)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
 
     //Capsules
     public static final RegistryObject<Block> TAPEBOT_CAPSULE_BLOCK = registerWithItem("tapebot_capsule_block", () -> new BotCapsuleBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE).strength(0,0).harvestLevel(0).sound(SoundType.GLASS)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));

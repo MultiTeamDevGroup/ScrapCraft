@@ -42,6 +42,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         withExistingParent("challenge_block_2", modLoc("block/challenge_block_2"));
         withExistingParent("aluminium", modLoc("block/aluminium"));
         withExistingParent("arrow_light_block", modLoc("block/arrow_light_block"));
+        withExistingParent("tiles_block", modLoc("block/tiles_block"));
 
         //Items
         ModelFile itemGenerated = getExistingFile(mcLoc("item/generated"));
