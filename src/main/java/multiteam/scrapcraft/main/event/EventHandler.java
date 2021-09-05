@@ -23,7 +23,7 @@ public class EventHandler {
     private static final ResourceLocation SOUL_PARTICLE = new ResourceLocation("minecraft", "textures/particle/soul_9.png");
 
     @SubscribeEvent
-    public static void renderGameUIParticle(RenderGameOverlayEvent event){
+    public static void renderGameOverlayEvent(RenderGameOverlayEvent.Post event){
         MatrixStack matrixStack = event.getMatrixStack();
         Minecraft mc = Minecraft.getInstance();
 
@@ -33,6 +33,10 @@ public class EventHandler {
         //System.out.println("partial ticks: " + event.getPartialTicks() + "; sin: " + Math.sin(event.getPartialTicks()) + "; times 2: " + (Math.sin(event.getPartialTicks()))*10 + "; to int: " + (int)Math.round((Math.sin(event.getPartialTicks()))*10));
         //UIParticle collectButton = new UIParticle(COOKBOT_GUI, 512, 512, new Vector4f(207.0F, 332.0F, 305, 17));
         //renderParticle(matrixStack, 0, (int)Math.round((Math.sin(event.getPartialTicks()))*10), collectButton);
+
+        RenderSystem.pushMatrix();
+        //mc.font.drawShadow(matrixStack, "debugPage: ", 12f, 16f, 0xffaa00); //swithcing to RenderGameOverlayEvent.Post solved rendering text making the screen go black
+        RenderSystem.popMatrix();
 
         /**RenderSystem.pushMatrix();
         FontRenderer fontrenderer = mc.gui.getFont();
