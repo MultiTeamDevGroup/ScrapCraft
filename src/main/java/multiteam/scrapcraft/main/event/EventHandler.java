@@ -2,19 +2,15 @@ package multiteam.scrapcraft.main.event;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import multiteam.scrapcraft.ScrapCraft;
+import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.AbstractGui;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.util.math.vector.Vector4f;
-import net.minecraft.util.registry.Registry;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = ScrapCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EventHandler {
@@ -61,6 +57,16 @@ public class EventHandler {
         }**/
     }
 
+    @SubscribeEvent
+    public static void PlayerRenderTickEvent(TickEvent.PlayerTickEvent event){
 
+        if(event.player.getMainHandItem().getItem() == ModItems.CONNECT_TOOL.get()){
+
+            MinecraftForge.EVENT_BUS.post(new EnableConnectPointsEvent(true, event.player.level));
+        }else{
+            MinecraftForge.EVENT_BUS.post(new EnableConnectPointsEvent(false, event.player.level));
+        }
+
+    }
 
 }

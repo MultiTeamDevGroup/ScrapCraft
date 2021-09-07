@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.item;
 
+import multiteam.multicore_lib.setup.utilities.RegistrationTool;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.item.spudweapons.SpudGun;
@@ -19,6 +20,8 @@ public class ModItems {
     public static final RegistryObject<Item> HAMMER = Registration.ITEMS.register("sledge_hammer", () -> new HammerItem(ItemTier.IRON, 1, -2.8F, (new Item.Properties()).tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
     public static final RegistryObject<Item> SPUDGUN = Registration.ITEMS.register("spud_gun", () -> new SpudGun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
     public static final RegistryObject<Item> SPUDSHOTGUN = Registration.ITEMS.register("spud_shotgun", () -> new SpudShotgun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
+    public static final RegistryObject<Item> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () -> new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
+
 
     //Items
     public static final RegistryObject<Item> GLUE = Registration.ITEMS.register("glue", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS)));

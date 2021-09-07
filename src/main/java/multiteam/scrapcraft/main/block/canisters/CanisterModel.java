@@ -8,10 +8,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
-@ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class CanisterModel extends AnimatedGeoModel<CanisterTileEntity> implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);

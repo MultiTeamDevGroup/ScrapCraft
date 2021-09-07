@@ -6,11 +6,14 @@ import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleBlock;
 import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleTileEntity;
 import multiteam.scrapcraft.main.block.canisters.CanisterBlock;
 import multiteam.scrapcraft.main.block.canisters.CanisterTileEntity;
+import multiteam.scrapcraft.main.block.connectable.seat.SeatBlock;
+import multiteam.scrapcraft.main.block.connectable.seat.SeatTileEntity;
 import multiteam.scrapcraft.main.block.cookbot.CookBotBlock;
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotBlock;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotTileEntity;
 import multiteam.scrapcraft.main.block.signs.SignBlock;
+import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -25,6 +28,11 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("ConstantConditions")
 public class ModBlocks {
+
+    //ConnectablePart
+    public static final RegistryObject<Block> SEAT_BLOCK = registerWithItem("seat_block", () -> new SeatBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_PARTS));
+    public static final RegistryObject<TileEntityType<SeatTileEntity>> SEAT_TILE = Registration.TILE_ENTITY_TYPES.register("seat_tile", () -> TileEntityType.Builder.of(SeatTileEntity::new, SEAT_BLOCK.get()).build(null));
+
     //Machines
     public static final RegistryObject<Block> COOKBOT_BLOCK = registerWithItem("cookbot_block", () -> new CookBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
     public static final RegistryObject<TileEntityType<CookBotTileEntity>> COOKBOT_TILE = Registration.TILE_ENTITY_TYPES.register("cookbot_tile", () -> TileEntityType.Builder.of(CookBotTileEntity::new, COOKBOT_BLOCK.get()).build(null));
@@ -78,4 +86,5 @@ public class ModBlocks {
     private static boolean never(BlockState p_235436_0_, IBlockReader p_235436_1_, BlockPos p_235436_2_) {
         return false;
     }
+
 }

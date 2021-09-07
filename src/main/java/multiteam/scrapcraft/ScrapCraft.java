@@ -5,6 +5,7 @@ import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleRenderer;
 import multiteam.scrapcraft.main.block.canisters.CanisterRenderer;
+import multiteam.scrapcraft.main.block.connectable.seat.SeatRenderer;
 import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
 import multiteam.scrapcraft.main.client.container.CookBotScreen;
@@ -42,6 +43,7 @@ public class ScrapCraft
     public static final ItemGroupTool SCRAPCRAFT_TOOLS = new ItemGroupTool("scrapcraft_tools", () -> new ItemStack(ModItems.HAMMER.get()));
     public static final ItemGroupTool SCRAPCRAFT_BLOCKS = new ItemGroupTool("scrapcraft_blocks", () -> new ItemStack(ModBlocks.INSULATION.get().asItem()));
     public static final ItemGroupTool SCRAPCRAFT_ITEMS = new ItemGroupTool("scrapcraft_items", () -> new ItemStack(ModItems.GLUE.get()));
+    public static final ItemGroupTool SCRAPCRAFT_PARTS = new ItemGroupTool("scrapcraft_parts", () -> new ItemStack(ModBlocks.SEAT_BLOCK.get()));
 
     public ScrapCraft() {
 
@@ -70,6 +72,7 @@ public class ScrapCraft
         ClientRegistry.bindTileEntityRenderer(ModBlocks.OBSERVERBOT_TILE.get(), ObserverBotRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.TAPEBOT_CAPSULE_TILE.get(), BotCapsuleRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.CANISTER_TILE_SMALL.get(), CanisterRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModBlocks.SEAT_TILE.get(), SeatRenderer::new);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.OBSERVERBOT_BLOCK.get(), RenderType.cutoutMipped());
@@ -79,6 +82,7 @@ public class ScrapCraft
         RenderTypeLookup.setRenderLayer(ModBlocks.NET_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.THICK_NET_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.STRIPED_NET_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.SEAT_BLOCK.get(), RenderType.translucent());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
