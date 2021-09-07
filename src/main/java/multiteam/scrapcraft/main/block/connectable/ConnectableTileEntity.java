@@ -5,6 +5,7 @@ import multiteam.scrapcraft.main.block.connectable.seat.SeatTileEntity;
 import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -37,6 +38,11 @@ public abstract class ConnectableTileEntity extends TileEntity {
             }
         }
 
+    }
+
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        return new AxisAlignedBB(getBlockPos(), getBlockPos().offset(20, 20, 20));
     }
 
 }
