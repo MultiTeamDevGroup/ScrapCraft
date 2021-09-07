@@ -37,13 +37,15 @@ public class SeatRenderer extends GeoBlockRenderer<SeatTileEntity> {
 
             if(seatTile.getConnectPointState()){
 
-                TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(new ResourceLocation("minecraft", "block/cobblestone"));
-                long time = System.currentTimeMillis();
                 IVertexBuilder builder = buffer.getBuffer(ModRenderTypes.OVERLAY_BLOCK);
-                Random rnd = new Random(seatTile.getBlockPos().getX() * 337L + seatTile.getBlockPos().getY() * 37L + seatTile.getBlockPos().getZ() * 13L);
+                TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(new ResourceLocation("minecraft", "block/cobblestone"));
+
+                //makes the quad rotate and rise/get lowered in space and expand/shrink somewhat like a dropped item is animated
+                /**long time = System.currentTimeMillis();
                 double speed = 2d;
                 float angle = (time / (int)speed) % 360;
                 Quaternion rotation = Vector3f.YP.rotationDegrees(angle);
+                Random rnd = new Random(seatTile.getBlockPos().getX() * 337L + seatTile.getBlockPos().getY() * 37L + seatTile.getBlockPos().getZ() * 13L);
                 float scale = 1.0f + diffFunction(time,900 + rnd.nextInt(800), 0.0001f + rnd.nextFloat() * 0.001f);
 
                 float dx1 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);
@@ -53,7 +55,7 @@ public class SeatRenderer extends GeoBlockRenderer<SeatTileEntity> {
                 float dy1 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);
                 float dy2 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);
                 float dy3 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);
-                float dy4 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);
+                float dy4 = diffFunction(time, 900 + rnd.nextInt(800), 0.00001f + rnd.nextFloat() * 0.0001f);**/
 
                 matrixStack.pushPose();
 
