@@ -1,6 +1,7 @@
 package multiteam.scrapcraft.main.block.connectable.seat;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.main.client.rendering.ModRenderTypes;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3f;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 
@@ -73,7 +75,6 @@ public class SeatRenderer extends GeoBlockRenderer<SeatTileEntity> {
 
                 matrixStack.pushPose();
 
-                buildCube(builder, matrixStack, seatTile.connectionPointColor, MathF.BlockToFloatScaleVector3f(6,6,6), MathF.BlockToFloatScaleVector3f(5,16,5));
                 buildCube(builder, matrixStack, seatTile.connectionPointColor, MathF.BlockToFloatScaleVector3f(5,5,5), MathF.BlockToFloatScaleVector3f(5.5f,5.5f,5.5f));
 
                 matrixStack.popPose();

@@ -40,8 +40,7 @@ public class BotCapsuleTileEntity extends TileEntity implements IAnimatable {
 
     @Override
     public AxisAlignedBB getRenderBoundingBox() {
-        return new AxisAlignedBB(-2,-2,-2,4,4,4);
+        return new AxisAlignedBB(getBlockPos(), getBlockPos().offset(20, 20, 20));
     }
-
 
 }
