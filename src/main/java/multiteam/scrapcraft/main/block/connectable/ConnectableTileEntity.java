@@ -1,11 +1,11 @@
 package multiteam.scrapcraft.main.block.connectable;
 
 import multiteam.scrapcraft.ScrapCraft;
-import multiteam.scrapcraft.main.block.connectable.seat.SeatTileEntity;
 import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,11 +14,12 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = ScrapCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public abstract class ConnectableTileEntity extends TileEntity {
 
-
     private boolean connectPointState = false;
+    public Vector3f connectionPointColor;
 
     public ConnectableTileEntity(TileEntityType<?> p_i48289_1_) {
         super(p_i48289_1_);
+        this.connectionPointColor = defineConnectPointColor();
     }
 
     public void setConnectPointState(boolean state){
@@ -44,5 +45,7 @@ public abstract class ConnectableTileEntity extends TileEntity {
     public AxisAlignedBB getRenderBoundingBox() {
         return new AxisAlignedBB(getBlockPos(), getBlockPos().offset(20, 20, 20));
     }
+
+    public abstract Vector3f defineConnectPointColor();
 
 }

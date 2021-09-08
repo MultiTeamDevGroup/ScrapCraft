@@ -2,9 +2,8 @@ package multiteam.scrapcraft.main.block.connectable.seat;
 
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.connectable.ConnectableTileEntity;
-import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.util.math.vector.Vector3f;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.controller.AnimationController;
@@ -20,6 +19,10 @@ public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable
         super(p_i48289_1_);
     }
 
+    @Override
+    public Vector3f defineConnectPointColor() {
+        return new Vector3f(255/255.0f, 140/255.0f, 0/255.0f);
+    }
 
     public SeatTileEntity() {
         this(ModBlocks.SEAT_TILE.get());
@@ -39,6 +42,5 @@ public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable
     public AnimationFactory getFactory() {
         return this.factory;
     }
-
 
 }

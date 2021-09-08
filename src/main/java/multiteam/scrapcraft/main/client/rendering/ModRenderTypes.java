@@ -14,6 +14,7 @@ public class ModRenderTypes extends RenderType {
     }
 
     public static final RenderType OVERLAY_BLOCK = RenderType.create("overlay_block", DefaultVertexFormats.BLOCK, 7, 262144, true, true,  RenderType.State.builder().setShadeModelState(SMOOTH_SHADE).setLightmapState(LIGHTMAP).setTextureState(BLOCK_SHEET_MIPPED).setTransparencyState(TRANSLUCENT_TRANSPARENCY).setOutputState(TRANSLUCENT_TARGET).setDepthTestState(NO_DEPTH_TEST).setCullState(NO_CULL).setWriteMaskState(RenderState.COLOR_WRITE).createCompositeState(true));
-    public static final RenderType FULLBRIGHT_BLOCK = RenderType.create("overlay_block", DefaultVertexFormats.BLOCK, 7, 262144, true, true,  RenderType.State.builder().setShadeModelState(SMOOTH_SHADE).setLightmapState(NO_LIGHTMAP).setTextureState(BLOCK_SHEET_MIPPED).setTransparencyState(TRANSLUCENT_TRANSPARENCY).setOutputState(TRANSLUCENT_TARGET).createCompositeState(true));
+    public static final RenderType FULLBRIGHT_BLOCK = RenderType.create("fullbright_block", DefaultVertexFormats.BLOCK, 7, 262144, true, true,  RenderType.State.builder().setShadeModelState(SMOOTH_SHADE).setLightmapState(NO_LIGHTMAP).setTextureState(BLOCK_SHEET_MIPPED).setTransparencyState(TRANSLUCENT_TRANSPARENCY).setOutputState(TRANSLUCENT_TARGET).createCompositeState(true));
+    public static final RenderType CONNECTION_POINT = RenderType.create("connection_point", DefaultVertexFormats.POSITION_COLOR, 7, 262144, true, true,  RenderType.State.builder().setShadeModelState(SMOOTH_SHADE).setLightmapState(NO_LIGHTMAP).setTransparencyState(TRANSLUCENT_TRANSPARENCY).setOutputState(TRANSLUCENT_TARGET).setDepthTestState(NO_DEPTH_TEST).setCullState(NO_CULL).setWriteMaskState(RenderState.COLOR_WRITE).createCompositeState(true));
 
 }
