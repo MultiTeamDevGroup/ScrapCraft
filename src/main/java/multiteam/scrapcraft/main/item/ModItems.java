@@ -1,8 +1,9 @@
 package multiteam.scrapcraft.main.item;
 
-import multiteam.multicore_lib.setup.utilities.RegistrationTool;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
+import multiteam.scrapcraft.main.item.connect_tool.ConnectToolItem;
+import multiteam.scrapcraft.main.item.connect_tool.ConnectToolRenderer;
 import multiteam.scrapcraft.main.item.spudweapons.SpudGun;
 import multiteam.scrapcraft.main.item.spudweapons.SpudShotgun;
 import net.minecraft.item.Food;
@@ -12,6 +13,8 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
+import software.bernie.example.client.renderer.item.JackInTheBoxRenderer;
+import software.bernie.example.item.JackInTheBoxItem;
 
 @SuppressWarnings("unused")
 public class ModItems {
@@ -20,7 +23,8 @@ public class ModItems {
     public static final RegistryObject<Item> HAMMER = Registration.ITEMS.register("sledge_hammer", () -> new HammerItem(ItemTier.IRON, 1, -2.8F, (new Item.Properties()).tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
     public static final RegistryObject<Item> SPUDGUN = Registration.ITEMS.register("spud_gun", () -> new SpudGun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
     public static final RegistryObject<Item> SPUDSHOTGUN = Registration.ITEMS.register("spud_shotgun", () -> new SpudShotgun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
-    public static final RegistryObject<Item> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () -> new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
+    //public static final RegistryObject<Item> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () -> new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
+    public static final RegistryObject<ConnectToolItem> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () ->new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).setISTER(() -> ConnectToolRenderer::new)));
 
 
     //Items
