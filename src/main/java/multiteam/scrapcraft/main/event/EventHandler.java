@@ -2,15 +2,22 @@ package multiteam.scrapcraft.main.event;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import multiteam.scrapcraft.ScrapCraft;
+import multiteam.scrapcraft.main.block.connectable.ConnectPointRenderer;
+import multiteam.scrapcraft.main.block.connectable.ConnectableTileEntity;
+import multiteam.scrapcraft.main.client.rendering.ModRenderTypes;
 import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = ScrapCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EventHandler {

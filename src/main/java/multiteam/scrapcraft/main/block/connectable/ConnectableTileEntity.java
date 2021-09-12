@@ -2,6 +2,7 @@ package multiteam.scrapcraft.main.block.connectable;
 
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -9,12 +10,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import software.bernie.geckolib3.core.IAnimatable;
 
 import java.util.List;
 import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = ScrapCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public abstract class ConnectableTileEntity extends TileEntity {
+public abstract class ConnectableTileEntity extends TileEntity implements IAnimatable {
 
     private boolean connectPointState = false;
     public Vector3f connectionPointColor;

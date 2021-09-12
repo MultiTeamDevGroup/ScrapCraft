@@ -7,13 +7,14 @@ import multiteam.scrapcraft.main.block.connectable.ConnectableTileEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3f;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
 
 import javax.annotation.Nullable;
 
 public class SwitchRenderer extends GeoBlockRenderer<SwitchTileEntity> {
+
 
     public SwitchRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
         super(rendererDispatcherIn, new SwitchModel());
@@ -25,12 +26,13 @@ public class SwitchRenderer extends GeoBlockRenderer<SwitchTileEntity> {
     }
 
     @Override
-    public void render(TileEntity tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLightIn, int combinedOverlayIn) {
+    public void renderLate(SwitchTileEntity animatable, MatrixStack stackIn, float ticks, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float partialTicks) {
 
-        if(tile instanceof ConnectableTileEntity){
-            ConnectableTileEntity connectTile = (ConnectableTileEntity)tile;
-            ConnectPointRenderer.render(connectTile, partialTicks, matrixStack, buffer, combinedLightIn, combinedOverlayIn);
+        if(animatable instanceof ConnectableTileEntity){
+            ConnectPointRenderer.renderConnectPoint(animatable, getTextureLocation(animatable), stackIn, renderTypeBuffer, new Vector3f(5.5f,5.5f,5.5f));
         }
-
     }
+
+
+
 }

@@ -4,25 +4,27 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.main.client.rendering.ModRenderTypes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.texture.AtlasTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
 
 public class ConnectPointRenderer {
 
-    public static void render(ConnectableTileEntity tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer buffer, int combinedLightIn, int combinedOverlayIn) {
+    public static Vector3f blockCenter = new Vector3f(-MathF.BlockToFloatScale(2.5f), MathF.BlockToFloatScale(5.5f), -MathF.BlockToFloatScale(2.5f));
+
+    public static void renderConnectPoint(ConnectableTileEntity tile, ResourceLocation tex, MatrixStack matrixStack, IRenderTypeBuffer buffer, Vector3f offset) {
 
         if(tile.getConnectPointState()){
 
-            IVertexBuilder builder = buffer.getBuffer(ModRenderTypes.CONNECTION_POINT);
-            TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(new ResourceLocation("minecraft", "block/cobblestone"));
-
             matrixStack.pushPose();
 
-            buildCube(builder, matrixStack, tile.connectionPointColor, MathF.BlockToFloatScaleVector3f(5,5,5), MathF.BlockToFloatScaleVector3f(5.5f,5.5f,5.5f));
+            IVertexBuilder builder = buffer.getBuffer(ModRenderTypes.CONNECTION_POINT);
+
+
+            buildCube(builder, matrixStack, tile.connectionPointColor, MathF.BlockToFloatScaleVector3f(5,5,5), blockCenter);
+
+            builder = buffer.getBuffer(RenderType.entityTranslucent(tex));
 
             matrixStack.popPose();
         }

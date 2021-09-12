@@ -13,6 +13,8 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable {
 
+
+
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public SeatTileEntity(TileEntityType<SeatTileEntity> p_i48289_1_) {

@@ -76,6 +76,8 @@ public class ScrapCraft
         ClientRegistry.bindTileEntityRenderer(ModBlocks.SEAT_TILE.get(), SeatRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.SWITCH_TILE.get(), SwitchRenderer::new);
 
+        RenderTypeLookup.setRenderLayer(ModBlocks.SWITCH_BLOCK.get(), RenderType.cutoutMipped());
+        RenderTypeLookup.setRenderLayer(ModBlocks.SEAT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.OBSERVERBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.TAPEBOT_CAPSULE_BLOCK.get(), RenderType.translucent());

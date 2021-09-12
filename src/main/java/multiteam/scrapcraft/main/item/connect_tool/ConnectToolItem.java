@@ -56,7 +56,7 @@ public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
         if(tile != null){
             if(tile instanceof ConnectableTileEntity){
                 ConnectableTileEntity connectTile = (ConnectableTileEntity)tile;
-                //System.out.println(clickedBlock + " at " + clickedPos + " with connect info of: " + connectTile.connectInfo.connectType + " - " + connectTile.connectInfo.connectMethod);
+                System.out.println(clickedBlock + " at " + clickedPos + " with connect info of: " + connectTile.connectInfo.connectType + " - " + connectTile.connectInfo.connectMethod);
             }
         }
 
