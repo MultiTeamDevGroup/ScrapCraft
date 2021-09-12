@@ -6,6 +6,7 @@ import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleRenderer;
 import multiteam.scrapcraft.main.block.canisters.CanisterRenderer;
 import multiteam.scrapcraft.main.block.connectable.seat.SeatRenderer;
+import multiteam.scrapcraft.main.block.connectable.switcc.SwitchRenderer;
 import multiteam.scrapcraft.main.block.cookbot.CookBotRenderer;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotRenderer;
 import multiteam.scrapcraft.main.client.container.CookBotScreen;
@@ -73,6 +74,7 @@ public class ScrapCraft
         ClientRegistry.bindTileEntityRenderer(ModBlocks.TAPEBOT_CAPSULE_TILE.get(), BotCapsuleRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.CANISTER_TILE_SMALL.get(), CanisterRenderer::new);
         ClientRegistry.bindTileEntityRenderer(ModBlocks.SEAT_TILE.get(), SeatRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModBlocks.SWITCH_TILE.get(), SwitchRenderer::new);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.COOKBOT_BLOCK.get(), RenderType.cutoutMipped());
         RenderTypeLookup.setRenderLayer(ModBlocks.OBSERVERBOT_BLOCK.get(), RenderType.cutoutMipped());

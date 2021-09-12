@@ -1,5 +1,6 @@
 package multiteam.scrapcraft.main.block;
 
+import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleBlock;
@@ -8,6 +9,8 @@ import multiteam.scrapcraft.main.block.canisters.CanisterBlock;
 import multiteam.scrapcraft.main.block.canisters.CanisterTileEntity;
 import multiteam.scrapcraft.main.block.connectable.seat.SeatBlock;
 import multiteam.scrapcraft.main.block.connectable.seat.SeatTileEntity;
+import multiteam.scrapcraft.main.block.connectable.switcc.SwitchBlock;
+import multiteam.scrapcraft.main.block.connectable.switcc.SwitchTileEntity;
 import multiteam.scrapcraft.main.block.cookbot.CookBotBlock;
 import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotBlock;
@@ -32,6 +35,8 @@ public class ModBlocks {
     //ConnectablePart
     public static final RegistryObject<Block> SEAT_BLOCK = registerWithItem("seat_block", () -> new SeatBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_PARTS));
     public static final RegistryObject<TileEntityType<SeatTileEntity>> SEAT_TILE = Registration.TILE_ENTITY_TYPES.register("seat_tile", () -> TileEntityType.Builder.of(SeatTileEntity::new, SEAT_BLOCK.get()).build(null));
+    public static final RegistryObject<Block> SWITCH_BLOCK = registerWithItem("switch_block", () -> new SwitchBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_PARTS));
+    public static final RegistryObject<TileEntityType<SwitchTileEntity>> SWITCH_TILE = Registration.TILE_ENTITY_TYPES.register("switch_tile", () -> TileEntityType.Builder.of(SwitchTileEntity::new, SWITCH_BLOCK.get()).build(null));
 
     //Machines
     public static final RegistryObject<Block> COOKBOT_BLOCK = registerWithItem("cookbot_block", () -> new CookBotBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_YELLOW).strength(0,0).harvestLevel(0).sound(SoundType.ANVIL)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));

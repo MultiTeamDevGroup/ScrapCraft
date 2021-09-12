@@ -1,0 +1,25 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.switch.on": {
+			"loop": true,
+			"bones": {
+				"actual_switch": {
+					"rotation": {
+						"vector": [0, 7.5, 0]
+					}
+				}
+			}
+		},
+		"animation.switch.off": {
+			"loop": true,
+			"bones": {
+				"actual_switch": {
+					"rotation": {
+						"vector": [0, -7.5, 0]
+					}
+				}
+			}
+		}
+	}
+}

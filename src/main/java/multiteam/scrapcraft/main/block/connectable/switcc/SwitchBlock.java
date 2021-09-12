@@ -1,4 +1,4 @@
-package multiteam.scrapcraft.main.block.connectable.seat;
+package multiteam.scrapcraft.main.block.connectable.switcc;
 
 import multiteam.scrapcraft.main.block.ModBlocks;
 import net.minecraft.block.Block;
@@ -8,10 +8,9 @@ import net.minecraft.world.IBlockReader;
 
 import javax.annotation.Nullable;
 
-public class SeatBlock extends Block {
+public class SwitchBlock extends Block {
 
-
-    public SeatBlock(Properties properties) {
+    public SwitchBlock(Properties properties) {
         super(properties);
     }
 
@@ -23,6 +22,6 @@ public class SeatBlock extends Block {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return ModBlocks.SEAT_TILE.get().create();
+        return ModBlocks.SWITCH_TILE.get().create();
     }
 }

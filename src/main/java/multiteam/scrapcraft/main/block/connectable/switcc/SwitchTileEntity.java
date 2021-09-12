@@ -1,4 +1,4 @@
-package multiteam.scrapcraft.main.block.connectable.seat;
+package multiteam.scrapcraft.main.block.connectable.switcc;
 
 import multiteam.scrapcraft.main.block.ModBlocks;
 import multiteam.scrapcraft.main.block.connectable.ConnectableTileEntity;
@@ -11,31 +11,31 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable {
+public class SwitchTileEntity extends ConnectableTileEntity implements IAnimatable {
 
     private final AnimationFactory factory = new AnimationFactory(this);
 
-    public SeatTileEntity(TileEntityType<SeatTileEntity> p_i48289_1_) {
+    public SwitchTileEntity(TileEntityType<SwitchTileEntity> p_i48289_1_) {
         super(p_i48289_1_);
     }
 
     @Override
     public Vector3f defineConnectPointColor() {
-        return new Vector3f(255/255.0f, 140/255.0f, 0/255.0f);
+        return new Vector3f(248/255.0f, 49/255.0f, 127/255.0f);
     }
 
     @Override
     public ConnectMethod defineConnectMethod() {
-        return ConnectMethod.BIDIRECTIONAL;
+        return ConnectMethod.MASTER;
     }
 
     @Override
     public ConnectType defineConnectType() {
-        return ConnectType.SEAT;
+        return ConnectType.INPUT;
     }
 
-    public SeatTileEntity() {
-        this(ModBlocks.SEAT_TILE.get());
+    public SwitchTileEntity() {
+        this(ModBlocks.SWITCH_TILE.get());
     }
 
     @Override

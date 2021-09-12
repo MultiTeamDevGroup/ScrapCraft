@@ -23,12 +23,12 @@ public class SeatModel extends AnimatedGeoModel<SeatTileEntity> implements IAnim
 
     @Override
     public ResourceLocation getModelLocation(SeatTileEntity object) {
-        return new ResourceLocation(ScrapCraft.MOD_ID, "geo/tileentity/this_does_not_exist.json");
+        return new ResourceLocation(ScrapCraft.MOD_ID, "geo/tileentity/driver_seat_lvl1.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureLocation(SeatTileEntity object) {
-        return new ResourceLocation(ScrapCraft.MOD_ID, "textures/block/neither_does_this.png");
+        return new ResourceLocation(ScrapCraft.MOD_ID, "textures/block/driver_seat_lvl1.png");
     }
 
     @Override
