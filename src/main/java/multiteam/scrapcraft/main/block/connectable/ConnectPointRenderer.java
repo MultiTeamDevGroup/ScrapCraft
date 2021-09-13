@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
+import org.lwjgl.opengl.GL11;
 
 public class ConnectPointRenderer {
 
@@ -27,7 +28,15 @@ public class ConnectPointRenderer {
             builder = buffer.getBuffer(RenderType.entityTranslucent(tex));
 
             matrixStack.popPose();
+
         }
+    }
+
+    public static float Vector3fDistance(Vector3f pointA, Vector3f pointB) {
+        float num1 = pointA.x() - pointB.x();
+        float num2 = pointA.y() - pointB.y();
+        float num3 = pointA.z() - pointB.z();
+        return (float) Math.sqrt((double) num1 * (double) num1 + (double) num2 * (double) num2 + (double) num3 * (double) num3);
     }
 
     private static void buildCube(IVertexBuilder builder, MatrixStack matrixStack, Vector3f color, Vector3f size, Vector3f offset){

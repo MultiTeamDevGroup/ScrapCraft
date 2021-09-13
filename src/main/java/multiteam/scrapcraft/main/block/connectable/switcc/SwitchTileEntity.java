@@ -34,6 +34,11 @@ public class SwitchTileEntity extends ConnectableTileEntity implements IAnimatab
         return ConnectType.INPUT;
     }
 
+    @Override
+    public int defineConnectAmountLimit() {
+        return 100;
+    }
+
     public SwitchTileEntity() {
         this(ModBlocks.SWITCH_TILE.get());
     }

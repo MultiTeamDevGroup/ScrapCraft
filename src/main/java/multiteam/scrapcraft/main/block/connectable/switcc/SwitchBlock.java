@@ -32,8 +32,11 @@ public class SwitchBlock extends Block {
     }
     @Override
     public BlockRenderType getRenderShape(BlockState p_149645_1_) {
+
         return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
+
+    
 
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, IBlockReader iBlockReader, BlockPos blockPos, ISelectionContext context) {

@@ -36,6 +36,11 @@ public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable
         return ConnectType.SEAT;
     }
 
+    @Override
+    public int defineConnectAmountLimit() {
+        return 100;
+    }
+
     public SeatTileEntity() {
         this(ModBlocks.SEAT_TILE.get());
     }
