@@ -1,6 +1,5 @@
 package multiteam.scrapcraft.main.block;
 
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import multiteam.scrapcraft.ScrapCraft;
 import multiteam.scrapcraft.main.Registration;
 import multiteam.scrapcraft.main.block.botcapsules.BotCapsuleBlock;
@@ -16,7 +15,8 @@ import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotBlock;
 import multiteam.scrapcraft.main.block.observerbot.ObserverBotTileEntity;
 import multiteam.scrapcraft.main.block.signs.SignBlock;
-import multiteam.scrapcraft.main.event.EnableConnectPointsEvent;
+import multiteam.scrapcraft.main.block.tiles.multidir.MultiDirectionalTileBlock;
+import multiteam.scrapcraft.main.block.tiles.multidir.MultiDirectionalTileBlockItem;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -75,6 +75,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> TAPEBOT_CAPSULE_BLOCK = registerWithItem("tapebot_capsule_block", () -> new BotCapsuleBlock(AbstractBlock.Properties.of(Material.METAL, MaterialColor.COLOR_BLUE).strength(0,0).harvestLevel(0).sound(SoundType.GLASS)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_MACHINES));
     public static final RegistryObject<TileEntityType<BotCapsuleTileEntity>> TAPEBOT_CAPSULE_TILE = Registration.TILE_ENTITY_TYPES.register("tapebot_capsule_tile", () -> TileEntityType.Builder.of(BotCapsuleTileEntity::new, TAPEBOT_CAPSULE_BLOCK.get()).build(null));
 
+    public static final RegistryObject<Block> TESTBLOCK21 = registerWithItemCustom("testblock", () -> new MultiDirectionalTileBlock(AbstractBlock.Properties.of(Material.STONE)), new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_BLOCKS));
+
 
     public static void register(){}
 
@@ -85,6 +87,12 @@ public class ModBlocks {
     private static <T extends Block> RegistryObject<T> registerWithItem(String name, Supplier<T> block, Item.Properties itemProperties){
         RegistryObject<T> ret = registerNoItem(name, block);
         Registration.ITEMS.register(name, () -> new BlockItem(ret.get(), itemProperties));
+        return ret;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerWithItemCustom(String name, Supplier<T> block, Item.Properties itemProperties){
+        RegistryObject<T> ret = Registration.BLOCKS.register(name, block);
+        Registration.ITEMS.register(name, () -> new MultiDirectionalTileBlockItem(ret.get(), itemProperties));
         return ret;
     }
 

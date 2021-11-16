@@ -1,14 +1,24 @@
 package multiteam.scrapcraft.main.block.connectable;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import multiteam.multicore_lib.setup.utilities.MathF;
 import multiteam.scrapcraft.main.client.rendering.ModRenderTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.math.vector.Vector3f;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 
 public class ConnectPointRenderer {
 
@@ -22,16 +32,46 @@ public class ConnectPointRenderer {
 
             IVertexBuilder builder = buffer.getBuffer(ModRenderTypes.CONNECTION_POINT);
 
+            // bruh this is how you face the player matrixStack.mulPose(Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation());
 
             buildCube(builder, matrixStack, tile.connectionPointColor, MathF.BlockToFloatScaleVector3f(5,5,5), blockCenter);
+
+            /**ITextComponent component = new StringTextComponent("asdasd");
+            FontRenderer fontrenderer = Minecraft.getInstance().font;
+            float f2 = (float)(-fontrenderer.width(component) / 2);
+            int i = "deadmau5".equals(component.getString()) ? -10 : 0;
+            Matrix4f matrix4f = matrixStack.last().pose();
+            float f1 = Minecraft.getInstance().options.getBackgroundOpacity(0.25F);
+            int j = (int)(f1 * 255.0F) << 24;
+            fontrenderer.drawInBatch(component, f2, (float)i, 553648127, false, matrix4f, buffer, true, j, 1);**/
+
+
+
+            if(tile.connectInfo.connections != null){
+                for (ConnectableTileEntity.ConnectHolder holder : tile.connectInfo.connections) {
+                    Vector3f connectToPos = new Vector3f(holder.position.getX(), holder.position.getY(), holder.position.getZ());
+                    Vector3f connectFromPos = new Vector3f(tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ());
+                    buildPlane(
+                            builder,
+                            matrixStack,
+                            tile.connectionPointColor,
+                            new Vector3f(connectToPos.x(), connectToPos.y(), connectToPos.z()),
+                            new Vector3f(connectToPos.x()+1, connectToPos.y()+1, connectToPos.z()+1),
+                            new Vector3f(connectFromPos.x(), connectFromPos.y(), connectFromPos.z()),
+                            new Vector3f(connectFromPos.x()+1, connectFromPos.y()+1, connectFromPos.z()+1)
+                    );
+                }
+            }
+
 
             builder = buffer.getBuffer(RenderType.entityTranslucent(tex));
 
             matrixStack.popPose();
-
         }
+
     }
 
+    //Gonna go to MultiCoreLib
     public static float Vector3fDistance(Vector3f pointA, Vector3f pointB) {
         float num1 = pointA.x() - pointB.x();
         float num2 = pointA.y() - pointB.y();

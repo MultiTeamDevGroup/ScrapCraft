@@ -18,8 +18,6 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.network.ISyncable;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
 
 public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
 
@@ -70,6 +68,7 @@ public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
                     this.connectFrom.position = connectTile.getBlockPos();
                     System.out.println("started connecting " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " with connect info of: " + this.connectFrom.connectInfo.connectType + " - " + this.connectFrom.connectInfo.connectMethod);
                 }else{
+
                     this.isConnecting = false;
                     this.connectTo = new ConnectableTileEntity.ConnectHolder();
                     this.connectTo.connectInfo = connectTile.connectInfo;
@@ -80,12 +79,18 @@ public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
                     }
 
                     if(this.connectTo.connectInfo.connections.size() <= this.connectTo.connectInfo.connectAmountLimit){
-                        if(connectTile.CheckConnectability(this.connectFrom.connectInfo.connectType, this.connectTo.connectInfo.connectType)){
-
-                            connectTile.connectInfo.connections.add(this.connectTo);
-                            System.out.println("connected " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " to " + worldIn.getBlockState(this.connectTo.position) + " at " + this.connectTo.position);
+                        if(this.connectTo.connectInfo.connections.contains(this.connectFrom)){
+                            this.connectTo.connectInfo.connections.remove(this.connectFrom);
+                            System.out.println("disconnected " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " from " + worldIn.getBlockState(this.connectTo.position) + " at " + this.connectTo.position);
+                        }else{
+                            if(connectTile.CheckConnectability(this.connectFrom.connectInfo.connectType, this.connectTo.connectInfo.connectType)){
+                                connectTile.connectInfo.connections.add(this.connectFrom);
+                                System.out.println("connected " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " to " + worldIn.getBlockState(this.connectTo.position) + " at " + this.connectTo.position);
+                            }
                         }
+
                     }
+
 
                 }
 
