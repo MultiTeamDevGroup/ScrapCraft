@@ -2,7 +2,6 @@ package multiteam.scrapcraft.main.entity.tape_projectile;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MoverType;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -21,7 +20,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 
 public class TapeProjectileEntity extends AbstractArrowEntity implements IAnimatable {
-    private AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public TapeProjectileEntity(EntityType<? extends AbstractArrowEntity> p_i48546_1_, World p_i48546_2_) {
         super(p_i48546_1_, p_i48546_2_);
@@ -58,7 +57,7 @@ public class TapeProjectileEntity extends AbstractArrowEntity implements IAnimat
                 //this.makeParticle(2);
             }
         } else if (this.inGround && this.inGroundTime != 0 && this.inGroundTime >= 600) { //&& !this.effects.isEmpty()
-            this.level.broadcastEntityEvent(this, (byte)0);
+            this.level.broadcastEntityEvent(this, (byte) 0);
             //this.potion = Potions.EMPTY;
             //this.effects.clear();
             //this.entityData.set(ID_EFFECT_COLOR, -1);
@@ -67,10 +66,10 @@ public class TapeProjectileEntity extends AbstractArrowEntity implements IAnimat
     }
 
     public void shootFromRotation(Entity p_234612_1_, float p_234612_2_, float p_234612_3_, float p_234612_4_, float p_234612_5_, float p_234612_6_) {
-        float f = -MathHelper.sin(p_234612_3_ * ((float)Math.PI / 180F)) * MathHelper.cos(p_234612_2_ * ((float)Math.PI / 180F));
-        float f1 = -MathHelper.sin((p_234612_2_ + p_234612_4_) * ((float)Math.PI / 180F));
-        float f2 = MathHelper.cos(p_234612_3_ * ((float)Math.PI / 180F)) * MathHelper.cos(p_234612_2_ * ((float)Math.PI / 180F));
-        this.shoot((double)f, (double)f1, (double)f2, p_234612_5_, p_234612_6_);
+        float f = -MathHelper.sin(p_234612_3_ * ((float) Math.PI / 180F)) * MathHelper.cos(p_234612_2_ * ((float) Math.PI / 180F));
+        float f1 = -MathHelper.sin((p_234612_2_ + p_234612_4_) * ((float) Math.PI / 180F));
+        float f2 = MathHelper.cos(p_234612_3_ * ((float) Math.PI / 180F)) * MathHelper.cos(p_234612_2_ * ((float) Math.PI / 180F));
+        this.shoot(f, f1, f2, p_234612_5_, p_234612_6_);
         Vector3d vector3d = p_234612_1_.getDeltaMovement();
         this.setDeltaMovement(this.getDeltaMovement().add(vector3d.x, p_234612_1_.isOnGround() ? 0.0D : vector3d.y, vector3d.z));
     }

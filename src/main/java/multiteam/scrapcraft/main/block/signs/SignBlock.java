@@ -26,7 +26,7 @@ import net.minecraft.world.IWorldReader;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public class SignBlock extends Block{
+public class SignBlock extends Block {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = HorizontalBlock.FACING;
     private static final Map<Direction, VoxelShape> AABBS = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.box(0.0D, 4.5D, 14.0D, 16.0D, 12.5D, 16.0D), Direction.SOUTH, Block.box(0.0D, 4.5D, 0.0D, 16.0D, 12.5D, 2.0D), Direction.EAST, Block.box(0.0D, 4.5D, 0.0D, 2.0D, 12.5D, 16.0D), Direction.WEST, Block.box(14.0D, 4.5D, 0.0D, 16.0D, 12.5D, 16.0D)));
@@ -57,7 +57,7 @@ public class SignBlock extends Block{
         BlockPos blockpos = p_196258_1_.getClickedPos();
         Direction[] adirection = p_196258_1_.getNearestLookingDirections();
 
-        for(Direction direction : adirection) {
+        for (Direction direction : adirection) {
             if (direction.getAxis().isHorizontal()) {
                 Direction direction1 = direction.getOpposite();
                 blockstate = blockstate.setValue(FACING, direction1);

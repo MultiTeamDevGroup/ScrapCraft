@@ -93,10 +93,10 @@ public class CookBotBlock extends Block {
 
     @Override
     public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult hitResult) {
-        if(!worldIn.isClientSide){
+        if (!worldIn.isClientSide) {
             TileEntity cookbot = worldIn.getBlockEntity(pos);
-            if(cookbot instanceof CookBotTileEntity){
-                NetworkHooks.openGui(((ServerPlayerEntity) playerEntity), (CookBotTileEntity)cookbot, pos);
+            if (cookbot instanceof CookBotTileEntity) {
+                NetworkHooks.openGui(((ServerPlayerEntity) playerEntity), (CookBotTileEntity) cookbot, pos);
             }
         }
         return super.use(state, worldIn, pos, playerEntity, hand, hitResult);

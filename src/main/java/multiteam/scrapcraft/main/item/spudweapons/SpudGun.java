@@ -9,7 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class SpudGun extends SpudWeapon{
+public class SpudGun extends SpudWeapon {
 
     public SpudGun(Properties properties) {
         super(properties);

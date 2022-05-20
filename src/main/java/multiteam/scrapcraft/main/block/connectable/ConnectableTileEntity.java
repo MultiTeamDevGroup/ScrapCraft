@@ -49,44 +49,48 @@ public abstract class ConnectableTileEntity extends TileEntity implements IAnima
             new ConnectRule(ConnectType.SEAT, ConnectType.SEAT, false)
     );
 
-    public static class ConnectInfo{
+    public static class ConnectInfo {
         public ConnectMethod connectMethod;
         public ConnectType connectType;
         public int connectAmountLimit;
         public List<ConnectHolder> connections;
     }
-    public enum ConnectMethod{
+
+    public enum ConnectMethod {
         MASTER,
         SLAVE,
         BIDIRECTIONAL
     }
-    public enum ConnectType{
+
+    public enum ConnectType {
         LOGIC, //Logic gates, timers
         INPUT, //buttons, switches, sensors
         OUTPUT, //spudgun, lamps, horns, toteblocks
         MECHANICAL, //pistons, bearings
         SEAT //S E A T
     }
-    public static class ConnectHolder{
+
+    public static class ConnectHolder {
         public ConnectableTileEntity.ConnectInfo connectInfo;
         public BlockPos position;
     }
-    public class ConnectRule{
+
+    public class ConnectRule {
         public ConnectType typeA;
         public ConnectType typeB;
         public boolean canConnect;
 
-        public ConnectRule(ConnectType typeA, ConnectType typeB, boolean rule){
+        public ConnectRule(ConnectType typeA, ConnectType typeB, boolean rule) {
             this.typeA = typeA;
             this.typeB = typeB;
             this.canConnect = rule;
         }
     }
 
-    public boolean CheckConnectability(ConnectType typeA, ConnectType typeB){
+    public boolean CheckConnectability(ConnectType typeA, ConnectType typeB) {
         boolean state = false;
-        for (int i = 0; i < connectRules.size(); i++){
-            if(typeA == connectRules.get(i).typeA && typeB == connectRules.get(i).typeB){
+        for (int i = 0; i < connectRules.size(); i++) {
+            if (typeA == connectRules.get(i).typeA && typeB == connectRules.get(i).typeB) {
                 state = connectRules.get(i).canConnect;
             }
         }
@@ -102,19 +106,19 @@ public abstract class ConnectableTileEntity extends TileEntity implements IAnima
         this.connectInfo.connectAmountLimit = defineConnectAmountLimit();
     }
 
-    public void setConnectPointState(boolean state){
+    public void setConnectPointState(boolean state) {
         this.connectPointState = state;
     }
 
-    public boolean getConnectPointState(){
+    public boolean getConnectPointState() {
         return this.connectPointState;
     }
 
     @SubscribeEvent
-    public static void enableConnectionPoints(EnableConnectPointsEvent event){
-        List<TileEntity>  tiles = event.level.blockEntityList;
-        for (TileEntity tile : tiles){
-            if(tile instanceof ConnectableTileEntity){
+    public static void enableConnectionPoints(EnableConnectPointsEvent event) {
+        List<TileEntity> tiles = event.level.blockEntityList;
+        for (TileEntity tile : tiles) {
+            if (tile instanceof ConnectableTileEntity) {
                 ((ConnectableTileEntity) tile).setConnectPointState(event.state);
             }
         }
@@ -127,8 +131,11 @@ public abstract class ConnectableTileEntity extends TileEntity implements IAnima
     }
 
     public abstract Vector3f defineConnectPointColor();
+
     public abstract ConnectMethod defineConnectMethod();
+
     public abstract ConnectType defineConnectType();
+
     public abstract int defineConnectAmountLimit();
 
 }

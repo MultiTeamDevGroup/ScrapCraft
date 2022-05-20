@@ -1,7 +1,6 @@
 package multiteam.scrapcraft.main.block.botcapsules;
 
 import multiteam.scrapcraft.ScrapCraft;
-import multiteam.scrapcraft.main.block.cookbot.CookBotTileEntity;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.manager.AnimationData;

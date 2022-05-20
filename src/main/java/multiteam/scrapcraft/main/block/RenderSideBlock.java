@@ -34,7 +34,7 @@ public class RenderSideBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState  blockState, IBlockReader iBlockReader, BlockPos blockPos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState blockState, IBlockReader iBlockReader, BlockPos blockPos, ISelectionContext context) {
         return VoxelShapes.block();
     }
 

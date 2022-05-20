@@ -8,7 +8,7 @@ public class EnableConnectPointsEvent extends Event {
     public boolean state;
     public World level;
 
-    public EnableConnectPointsEvent(boolean state, World level){
+    public EnableConnectPointsEvent(boolean state, World level) {
         this.state = state;
         this.level = level;
     }

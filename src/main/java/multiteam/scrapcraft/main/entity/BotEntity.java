@@ -2,8 +2,6 @@ package multiteam.scrapcraft.main.entity;
 
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.goal.LookAtGoal;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
@@ -37,16 +35,18 @@ public abstract class BotEntity extends CreatureEntity {
     }
 
     public boolean hurt(DamageSource p_70097_1_, float p_70097_2_) {
-        return this.isInvulnerableTo(p_70097_1_) ? false : super.hurt(p_70097_1_, p_70097_2_);
+        return !this.isInvulnerableTo(p_70097_1_) && super.hurt(p_70097_1_, p_70097_2_);
     }
 
     public boolean isPreventingPlayerRest(PlayerEntity p_230292_1_) {
         return true;
     }
 
-    protected boolean shouldDespawnInPeaceful() { return this.despawnInPeaceful(); }
+    protected boolean shouldDespawnInPeaceful() {
+        return this.despawnInPeaceful();
+    }
 
-    public void registerGoals(){
+    public void registerGoals() {
         this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
         this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
@@ -64,7 +64,9 @@ public abstract class BotEntity extends CreatureEntity {
     public abstract void registerAdditionalGoals();
 
     public abstract SoundEvent getHurtSound(DamageSource source);
+
     public abstract SoundEvent getDeathSound();
+
     public abstract SoundEvent getStepSound();
 
 

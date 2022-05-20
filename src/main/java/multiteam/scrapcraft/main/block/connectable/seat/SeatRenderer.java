@@ -28,8 +28,8 @@ public class SeatRenderer extends GeoBlockRenderer<SeatTileEntity> {
     @Override
     public void renderLate(SeatTileEntity animatable, MatrixStack stackIn, float ticks, IRenderTypeBuffer renderTypeBuffer, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float partialTicks) {
 
-        if(animatable instanceof ConnectableTileEntity){
-            ConnectPointRenderer.renderConnectPoint(animatable, getTextureLocation(animatable), stackIn, renderTypeBuffer, new Vector3f(5.5f,5.5f,5.5f));
+        if (animatable instanceof ConnectableTileEntity) {
+            ConnectPointRenderer.renderConnectPoint(animatable, getTextureLocation(animatable), stackIn, renderTypeBuffer, new Vector3f(5.5f, 5.5f, 5.5f));
         }
     }
 

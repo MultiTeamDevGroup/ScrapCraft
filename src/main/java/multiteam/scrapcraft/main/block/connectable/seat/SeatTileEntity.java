@@ -14,7 +14,6 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable {
 
 
-
     private final AnimationFactory factory = new AnimationFactory(this);
 
     public SeatTileEntity(TileEntityType<SeatTileEntity> p_i48289_1_) {
@@ -23,7 +22,7 @@ public class SeatTileEntity extends ConnectableTileEntity implements IAnimatable
 
     @Override
     public Vector3f defineConnectPointColor() {
-        return new Vector3f(255/255.0f, 140/255.0f, 0/255.0f);
+        return new Vector3f(255 / 255.0f, 140 / 255.0f, 0 / 255.0f);
     }
 
     @Override

@@ -41,7 +41,7 @@ public class WeaponProjectile extends SnowballEntity {
     public void collision(RayTraceResult hitResult) {
         if (!this.level.isClientSide) {
             this.level.broadcastEntityEvent(this, (byte) 3);
-            if(this.level.getBlockState(this.blockPosition()).getBlock() != ModBlocks.CANISTER_BLOCK_SMALL.get()){
+            if (this.level.getBlockState(this.blockPosition()).getBlock() != ModBlocks.CANISTER_BLOCK_SMALL.get()) {
                 this.remove();
             }
         }

@@ -1,23 +1,16 @@
 package multiteam.scrapcraft.main.event;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.systems.RenderSystem;
 import multiteam.scrapcraft.ScrapCraft;
-import multiteam.scrapcraft.main.block.connectable.ConnectPointRenderer;
-import multiteam.scrapcraft.main.block.connectable.ConnectableTileEntity;
-import multiteam.scrapcraft.main.client.rendering.ModRenderTypes;
 import multiteam.scrapcraft.main.item.ModItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = ScrapCraft.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EventHandler {
@@ -26,7 +19,7 @@ public class EventHandler {
     private static final ResourceLocation SOUL_PARTICLE = new ResourceLocation("minecraft", "textures/particle/soul_9.png");
 
     @SubscribeEvent
-    public static void renderGameOverlayEvent(RenderGameOverlayEvent.Post event){
+    public static void renderGameOverlayEvent(RenderGameOverlayEvent.Post event) {
         MatrixStack matrixStack = event.getMatrixStack();
         Minecraft mc = Minecraft.getInstance();
 
@@ -42,35 +35,35 @@ public class EventHandler {
         RenderSystem.popMatrix();
 
         /**RenderSystem.pushMatrix();
-        FontRenderer fontrenderer = mc.gui.getFont();
-        mc.getProfiler().push("randomguitext");
-        RenderSystem.enableBlend();
-        RenderSystem.enableAlphaTest();
-        fontrenderer.draw(matrixStack, "This text is rendered by some magic. but why is the game world not visible???", (float)10, (float)40, 16777215); //this makes the screen go black
-        RenderSystem.defaultBlendFunc();
-        mc.getProfiler().pop();
-        RenderSystem.popMatrix();**/
+         FontRenderer fontrenderer = mc.gui.getFont();
+         mc.getProfiler().push("randomguitext");
+         RenderSystem.enableBlend();
+         RenderSystem.enableAlphaTest();
+         fontrenderer.draw(matrixStack, "This text is rendered by some magic. but why is the game world not visible???", (float)10, (float)40, 16777215); //this makes the screen go black
+         RenderSystem.defaultBlendFunc();
+         mc.getProfiler().pop();
+         RenderSystem.popMatrix();**/
 
         /**for (int i = 0; i == Registration.UIPARTICLES.getEntries().size(); i++){
-            matrixStack.pushPose();
+         matrixStack.pushPose();
 
-            UIParticle particleToRender = Registry.ITEM.;
-            Objects.requireNonNull(mc).textureManager.bind(particleToRender.getTexture());
+         UIParticle particleToRender = Registry.ITEM.;
+         Objects.requireNonNull(mc).textureManager.bind(particleToRender.getTexture());
 
-            matrixStack.scale(2f, 2f, 2f);
-            renderParticle(matrixStack, ((event.getWindow().getGuiScaledWidth()/2)-32)/2, ((event.getWindow().getGuiScaledHeight()/2)-32)/2, particleToRender);
+         matrixStack.scale(2f, 2f, 2f);
+         renderParticle(matrixStack, ((event.getWindow().getGuiScaledWidth()/2)-32)/2, ((event.getWindow().getGuiScaledHeight()/2)-32)/2, particleToRender);
 
-            matrixStack.popPose();
-        }**/
+         matrixStack.popPose();
+         }**/
     }
 
     @SubscribeEvent
-    public static void PlayerRenderTickEvent(TickEvent.PlayerTickEvent event){
+    public static void PlayerRenderTickEvent(TickEvent.PlayerTickEvent event) {
 
-        if(event.player.getMainHandItem().getItem() == ModItems.CONNECT_TOOL.get()){
+        if (event.player.getMainHandItem().getItem() == ModItems.CONNECT_TOOL.get()) {
 
             MinecraftForge.EVENT_BUS.post(new EnableConnectPointsEvent(true, event.player.level));
-        }else{
+        } else {
             MinecraftForge.EVENT_BUS.post(new EnableConnectPointsEvent(false, event.player.level));
         }
 

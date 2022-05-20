@@ -21,7 +21,7 @@ public class SwitchTileEntity extends ConnectableTileEntity implements IAnimatab
 
     @Override
     public Vector3f defineConnectPointColor() {
-        return new Vector3f(248/255.0f, 49/255.0f, 127/255.0f);
+        return new Vector3f(248 / 255.0f, 49 / 255.0f, 127 / 255.0f);
     }
 
     @Override

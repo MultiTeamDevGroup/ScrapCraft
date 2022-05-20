@@ -30,13 +30,13 @@ public class SwitchBlock extends Block {
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return ModBlocks.SWITCH_TILE.get().create();
     }
+
     @Override
     public BlockRenderType getRenderShape(BlockState p_149645_1_) {
 
         return BlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
-    
 
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, IBlockReader iBlockReader, BlockPos blockPos, ISelectionContext context) {

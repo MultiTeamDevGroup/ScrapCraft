@@ -32,15 +32,15 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
-public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttackMob {
-    private AnimationFactory factory = new AnimationFactory(this);
+public class TapebotEntity extends BotEntity implements IAnimatable, IRangedAttackMob {
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public TapebotEntity(EntityType<? extends BotEntity> p_i48576_1_, World p_i48576_2_) {
         super(p_i48576_1_, p_i48576_2_);
     }
 
     public static AttributeModifierMap.MutableAttribute createAttributes() {
-        return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, (double)0.3F).add(Attributes.ATTACK_DAMAGE, 5.0D);
+        return MobEntity.createMobAttributes().add(Attributes.MAX_HEALTH, 10.0D).add(Attributes.MOVEMENT_SPEED, 0.3F).add(Attributes.ATTACK_DAMAGE, 5.0D);
     }
 
     public boolean canBeCollidedWith() {
@@ -70,12 +70,12 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
         ItemStack itemstack = this.getProjectile(this.getItemInHand(ProjectileHelper.getWeaponHoldingHand(this, Items.BOW)));
         AbstractArrowEntity abstractarrowentity = this.getArrow(itemstack, p_82196_2_);
         if (this.getMainHandItem().getItem() instanceof net.minecraft.item.BowItem)
-            abstractarrowentity = ((net.minecraft.item.BowItem)this.getMainHandItem().getItem()).customArrow(abstractarrowentity);
+            abstractarrowentity = ((net.minecraft.item.BowItem) this.getMainHandItem().getItem()).customArrow(abstractarrowentity);
         double d0 = p_82196_1_.getX() - this.getX();
         double d1 = p_82196_1_.getY(0.3333333333333333D) - abstractarrowentity.getY();
         double d2 = p_82196_1_.getZ() - this.getZ();
-        double d3 = (double) MathHelper.sqrt(d0 * d0 + d2 * d2);
-        abstractarrowentity.shoot(d0, d1 + d3 * (double)0.2F, d2, 1.6F, (float)(14 - this.level.getDifficulty().getId() * 4));
+        double d3 = MathHelper.sqrt(d0 * d0 + d2 * d2);
+        abstractarrowentity.shoot(d0, d1 + d3 * (double) 0.2F, d2, 1.6F, (float) (14 - this.level.getDifficulty().getId() * 4));
         this.playSound(SoundEvents.SKELETON_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level.addFreshEntity(abstractarrowentity);
     }
@@ -138,7 +138,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
         }
 
         public boolean canUse() {
-            return this.mob.getTarget() == null ? false : this.isHoldingBow();
+            return this.mob.getTarget() != null && this.isHoldingBow();
         }
 
         protected boolean isHoldingBow() {
@@ -179,7 +179,7 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
                     --this.seeTime;
                 }
 
-                if (!(d0 > (double)this.attackRadiusSqr) && this.seeTime >= 20) {
+                if (!(d0 > (double) this.attackRadiusSqr) && this.seeTime >= 20) {
                     this.mob.getNavigation().stop();
                     ++this.strafingTime;
                 } else {
@@ -188,11 +188,11 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
                 }
 
                 if (this.strafingTime >= 20) {
-                    if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
+                    if ((double) this.mob.getRandom().nextFloat() < 0.3D) {
                         this.strafingClockwise = !this.strafingClockwise;
                     }
 
-                    if ((double)this.mob.getRandom().nextFloat() < 0.3D) {
+                    if ((double) this.mob.getRandom().nextFloat() < 0.3D) {
                         this.strafingBackwards = !this.strafingBackwards;
                     }
 
@@ -200,9 +200,9 @@ public class TapebotEntity extends BotEntity implements IAnimatable,IRangedAttac
                 }
 
                 if (this.strafingTime > -1) {
-                    if (d0 > (double)(this.attackRadiusSqr * 0.75F)) {
+                    if (d0 > (double) (this.attackRadiusSqr * 0.75F)) {
                         this.strafingBackwards = false;
-                    } else if (d0 < (double)(this.attackRadiusSqr * 0.25F)) {
+                    } else if (d0 < (double) (this.attackRadiusSqr * 0.25F)) {
                         this.strafingBackwards = true;
                     }
 

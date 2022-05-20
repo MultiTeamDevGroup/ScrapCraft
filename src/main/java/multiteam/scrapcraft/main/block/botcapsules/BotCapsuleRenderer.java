@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
@@ -35,10 +34,10 @@ public class BotCapsuleRenderer extends GeoBlockRenderer<BotCapsuleTileEntity> {
         Entity entity = null;
         World worldin = tile.getLevel();
         BlockState state = worldin.getBlockState(tile.getBlockPos());
-        if(state == ModBlocks.TAPEBOT_CAPSULE_BLOCK.get().defaultBlockState()){
+        if (state == ModBlocks.TAPEBOT_CAPSULE_BLOCK.get().defaultBlockState()) {
             entity = new TapebotEntity(ModEntities.TAPEBOT.get(), tile.getLevel());
         }
-        if(entity != null){
+        if (entity != null) {
             float f = 1F;
             matrixStackIn.pushPose();
             matrixStackIn.scale(f, f, f);

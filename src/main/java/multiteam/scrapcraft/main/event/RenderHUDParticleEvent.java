@@ -10,7 +10,7 @@ public class RenderHUDParticleEvent extends Event {
     public float partialTicks;
     public MainWindow window;
 
-    public RenderHUDParticleEvent(MatrixStack stack_, float ticks_, MainWindow window_){
+    public RenderHUDParticleEvent(MatrixStack stack_, float ticks_, MainWindow window_) {
         this.stack = stack_;
         this.partialTicks = ticks_;
         this.window = window_;

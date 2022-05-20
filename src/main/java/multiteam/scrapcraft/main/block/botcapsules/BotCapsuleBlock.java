@@ -84,13 +84,13 @@ public class BotCapsuleBlock extends Block {
     @Override
     public void playerDestroy(World worldIn, PlayerEntity playerEntity, BlockPos pos, BlockState state, @Nullable TileEntity tile, ItemStack stack) {
         Entity entity = null;
-        if(state == ModBlocks.TAPEBOT_CAPSULE_BLOCK.get().defaultBlockState()){
+        if (state == ModBlocks.TAPEBOT_CAPSULE_BLOCK.get().defaultBlockState()) {
             entity = new TapebotEntity(ModEntities.TAPEBOT.get(), worldIn);
             summonEntity(worldIn, pos, entity);
         }
     }
 
-    public void summonEntity(World worldin, BlockPos pos, Entity entity){
+    public void summonEntity(World worldin, BlockPos pos, Entity entity) {
         worldin.addFreshEntity(entity);
         entity.setPos(pos.getX(), pos.getY(), pos.getZ());
     }

@@ -1,6 +1,5 @@
 package multiteam.scrapcraft.main.block.canisters;
 
-import mcp.MethodsReturnNonnullByDefault;
 import multiteam.scrapcraft.ScrapCraft;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.core.IAnimatable;

@@ -9,7 +9,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class SpudShotgun extends SpudWeapon{
+public class SpudShotgun extends SpudWeapon {
 
     public SpudShotgun(Properties properties) {
         super(properties);
@@ -32,7 +32,7 @@ public class SpudShotgun extends SpudWeapon{
                 WeaponProjectile projectile = new WeaponProjectile(world, playerEntity);
                 projectile.bulletDamage = 3;
                 projectile.setItem(new ItemStack(this.getAmmoItem()));
-                projectile.shootFromRotation(playerEntity, playerEntity.xRot + (x*8), playerEntity.yRot + (y*8), 0.0F, 1.0F, 1.0F);
+                projectile.shootFromRotation(playerEntity, playerEntity.xRot + (x * 8), playerEntity.yRot + (y * 8), 0.0F, 1.0F, 1.0F);
 
                 world.addFreshEntity(projectile);
             }

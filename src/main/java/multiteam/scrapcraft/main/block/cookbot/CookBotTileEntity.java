@@ -45,21 +45,21 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         //event.getController().transitionLengthTicks = 0;
-        if(!this.isCooking){
-            if(event.getController().getAnimationState() == AnimationState.Stopped){
+        if (!this.isCooking) {
+            if (event.getController().getAnimationState() == AnimationState.Stopped) {
                 int randomChance = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-                if(randomChance < 10){ //10% - head hitting
+                if (randomChance < 10) { //10% - head hitting
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_2", false));
-                }else if(randomChance < 80){ //70% - look at spoon
+                } else if (randomChance < 80) { //70% - look at spoon
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_1", false));
-                }else if(randomChance < 90){ //10% - spoon sharpen
+                } else if (randomChance < 90) { //10% - spoon sharpen
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.idle_3", false));
-                }else{ //10% - no anim
+                } else { //10% - no anim
                     return PlayState.CONTINUE;
                 }
             }
-        }else{
-            switch (selectedFoodToProgress){
+        } else {
+            switch (selectedFoodToProgress) {
                 case 1:
                     //Pizza Burger - anim
                     event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.cookbot.cook_pizza_burger", false));
@@ -120,10 +120,9 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
     }
 
 
-
     @Override
     public ITextComponent getDefaultName() {
-        return new TranslationTextComponent("container."+ ScrapCraft.MOD_ID +".cookbot");
+        return new TranslationTextComponent("container." + ScrapCraft.MOD_ID + ".cookbot");
     }
 
     @Override
@@ -149,23 +148,23 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
     @Override
     public void tick() {
 
-        if(!isCooking){
+        if (!isCooking) {
             selectedFoodToProgress = selectedFood;
         }
 
-        if(isCooking && cookingProgress > 0){
+        if (isCooking && cookingProgress > 0) {
             --this.cookingProgress;
         }
 
-        if(isCooking && cookingProgress == 0){
+        if (isCooking && cookingProgress == 0) {
             outputItem = getOutputItem(selectedFoodToProgress);
             isCooking = false;
         }
     }
 
-    public ItemStack getOutputItem(int selItem){
+    public ItemStack getOutputItem(int selItem) {
         ItemStack returnStack = ItemStack.EMPTY;
-        switch (selItem){
+        switch (selItem) {
             case 1:
                 //Pizza Burger
                 returnStack = new ItemStack(ModItems.PIZZA_BURGER.get());
@@ -173,22 +172,22 @@ public class CookBotTileEntity extends LockableLootTileEntity implements IAnimat
             case 2:
                 //Veggie burger
                 returnStack = new ItemStack(ModItems.VEGGIE_BURGER.get());
-            break;
+                break;
             case 3:
                 //Revival Baguette
                 returnStack = new ItemStack(ModItems.REVIVAL_BAGUETTE.get());
-            break;
+                break;
         }
         return returnStack;
     }
 
-    public void giveResult(PlayerEntity player){
-        if(!player.level.isClientSide){
+    public void giveResult(PlayerEntity player) {
+        if (!player.level.isClientSide) {
             player.inventory.add(getOutputItem(this.selectedFoodToProgress));
         }
     }
 
-    public void setValues(int selected, int progress, boolean isCooking, ItemStack output){
+    public void setValues(int selected, int progress, boolean isCooking, ItemStack output) {
         this.selectedFood = selected;
         this.cookingProgress = progress;
         this.isCooking = isCooking;

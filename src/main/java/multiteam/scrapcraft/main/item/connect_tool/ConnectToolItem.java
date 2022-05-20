@@ -57,33 +57,33 @@ public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
         BlockState clickedBlock = worldIn.getBlockState(clickedPos);
         TileEntity tile = worldIn.getBlockEntity(clickedPos);
 
-        if(tile != null && !worldIn.isClientSide){
-            if(tile instanceof ConnectableTileEntity){
-                ConnectableTileEntity connectTile = (ConnectableTileEntity)tile;
+        if (tile != null && !worldIn.isClientSide) {
+            if (tile instanceof ConnectableTileEntity) {
+                ConnectableTileEntity connectTile = (ConnectableTileEntity) tile;
 
-                if(!this.isConnecting){
+                if (!this.isConnecting) {
                     this.isConnecting = true;
                     this.connectFrom = new ConnectableTileEntity.ConnectHolder();
                     this.connectFrom.connectInfo = connectTile.connectInfo;
                     this.connectFrom.position = connectTile.getBlockPos();
                     System.out.println("started connecting " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " with connect info of: " + this.connectFrom.connectInfo.connectType + " - " + this.connectFrom.connectInfo.connectMethod);
-                }else{
+                } else {
 
                     this.isConnecting = false;
                     this.connectTo = new ConnectableTileEntity.ConnectHolder();
                     this.connectTo.connectInfo = connectTile.connectInfo;
                     this.connectTo.position = connectTile.getBlockPos();
 
-                    if(this.connectTo.connectInfo.connections == null){
-                        this.connectTo.connectInfo.connections = new ArrayList<>();;
+                    if (this.connectTo.connectInfo.connections == null) {
+                        this.connectTo.connectInfo.connections = new ArrayList<>();
                     }
 
-                    if(this.connectTo.connectInfo.connections.size() <= this.connectTo.connectInfo.connectAmountLimit){
-                        if(this.connectTo.connectInfo.connections.contains(this.connectFrom)){
+                    if (this.connectTo.connectInfo.connections.size() <= this.connectTo.connectInfo.connectAmountLimit) {
+                        if (this.connectTo.connectInfo.connections.contains(this.connectFrom)) {
                             this.connectTo.connectInfo.connections.remove(this.connectFrom);
                             System.out.println("disconnected " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " from " + worldIn.getBlockState(this.connectTo.position) + " at " + this.connectTo.position);
-                        }else{
-                            if(connectTile.CheckConnectability(this.connectFrom.connectInfo.connectType, this.connectTo.connectInfo.connectType)){
+                        } else {
+                            if (connectTile.CheckConnectability(this.connectFrom.connectInfo.connectType, this.connectTo.connectInfo.connectType)) {
                                 connectTile.connectInfo.connections.add(this.connectFrom);
                                 System.out.println("connected " + worldIn.getBlockState(this.connectFrom.position) + " at " + this.connectFrom.position + " to " + worldIn.getBlockState(this.connectTo.position) + " at " + this.connectTo.position);
                             }
@@ -94,10 +94,10 @@ public class ConnectToolItem extends Item implements IAnimatable, ISyncable {
 
                 }
 
-            }else{
+            } else {
                 this.isConnecting = false;
             }
-        }else if(!worldIn.isClientSide){
+        } else if (!worldIn.isClientSide) {
             this.isConnecting = false;
         }
 

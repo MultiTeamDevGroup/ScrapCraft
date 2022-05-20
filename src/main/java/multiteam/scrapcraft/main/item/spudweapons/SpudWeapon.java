@@ -22,7 +22,7 @@ public abstract class SpudWeapon extends BowItem {
         super(properties);
     }
 
-    public ItemStack getAmmoInInventory(PlayerEntity playerEntity){
+    public ItemStack getAmmoInInventory(PlayerEntity playerEntity) {
         Item predicate = this.getAmmoItem();
         PlayerInventory playerInventory = playerEntity.inventory;
         for (int i = 0; i < playerInventory.getContainerSize(); i++) {
@@ -31,21 +31,21 @@ public abstract class SpudWeapon extends BowItem {
                 return stack;
             }
         }
-        return playerEntity.abilities.instabuild ? new ItemStack(predicate) :ItemStack.EMPTY;
+        return playerEntity.abilities.instabuild ? new ItemStack(predicate) : ItemStack.EMPTY;
     }
 
     @Override
     public void releaseUsing(ItemStack stack, World worldIn, LivingEntity livingEntity, int integerField) {
-        if (livingEntity instanceof PlayerEntity){
+        if (livingEntity instanceof PlayerEntity) {
             PlayerEntity playerEntity = (PlayerEntity) livingEntity;
             boolean canShoot = getAmmoInInventory(playerEntity) != ItemStack.EMPTY || playerEntity.isCreative();
             ItemStack ammoStack = getAmmoInInventory(playerEntity);
-            if(canShoot){
-                if(!worldIn.isClientSide){
+            if (canShoot) {
+                if (!worldIn.isClientSide) {
                     this.createProjectileEntities(worldIn, playerEntity);
                     worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootSound(), SoundCategory.PLAYERS, 1.0F, 1.0F);
-                    if(!playerEntity.isCreative()){
-                        stack.hurtAndBreak(1, (LivingEntity)playerEntity, (p) -> p.broadcastBreakEvent(playerEntity.getUsedItemHand()));
+                    if (!playerEntity.isCreative()) {
+                        stack.hurtAndBreak(1, (LivingEntity) playerEntity, (p) -> p.broadcastBreakEvent(playerEntity.getUsedItemHand()));
                         ammoStack.shrink(1);
                         if (ammoStack.isEmpty()) {
                             playerEntity.inventory.removeItem(ammoStack);
@@ -53,14 +53,14 @@ public abstract class SpudWeapon extends BowItem {
                     }
                     playerEntity.getCooldowns().addCooldown(this, this.getCooldown());
                 }
-            }else{
+            } else {
                 worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), this.getShootFail(), SoundCategory.PLAYERS, 1.0F, 1.0F);
             }
         }
     }
 
     public static float getPullProgress(int useTicks) {
-        float f = (float)useTicks / 20.0F;
+        float f = (float) useTicks / 20.0F;
         f = (f * f + f * 2.0F) / 3.0F;
         if (f > 1.0F) {
             f = 1.0F;

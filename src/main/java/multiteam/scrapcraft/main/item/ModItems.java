@@ -13,8 +13,6 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
-import software.bernie.example.client.renderer.item.JackInTheBoxRenderer;
-import software.bernie.example.item.JackInTheBoxItem;
 
 @SuppressWarnings("unused")
 public class ModItems {
@@ -24,7 +22,7 @@ public class ModItems {
     public static final RegistryObject<Item> SPUDGUN = Registration.ITEMS.register("spud_gun", () -> new SpudGun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
     public static final RegistryObject<Item> SPUDSHOTGUN = Registration.ITEMS.register("spud_shotgun", () -> new SpudShotgun(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).durability(200)));
     //public static final RegistryObject<Item> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () -> new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS)));
-    public static final RegistryObject<ConnectToolItem> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () ->new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).setISTER(() -> ConnectToolRenderer::new)));
+    public static final RegistryObject<ConnectToolItem> CONNECT_TOOL = Registration.ITEMS.register("connect_tool", () -> new ConnectToolItem(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_TOOLS).setISTER(() -> ConnectToolRenderer::new)));
 
 
     //Items
@@ -43,6 +41,7 @@ public class ModItems {
     public static final RegistryObject<Item> VEGGIE_BURGER = Registration.ITEMS.register("veggie_burger", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(COOKBOT_FOOD)));
     public static final RegistryObject<Item> REVIVAL_BAGUETTE = Registration.ITEMS.register("revival_baguette", () -> new Item(new Item.Properties().tab(ScrapCraft.SCRAPCRAFT_ITEMS).food(COOKBOT_FOOD)));
 
-    public static void register(){}
+    public static void register() {
+    }
 
 }

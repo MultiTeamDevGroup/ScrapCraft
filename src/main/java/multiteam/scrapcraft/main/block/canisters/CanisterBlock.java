@@ -63,8 +63,8 @@ public class CanisterBlock extends Block {
 
     @Override
     public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entity) {
-        if (entity instanceof ArrowEntity || entity instanceof WeaponProjectile){
-            if(!worldIn.isClientSide){
+        if (entity instanceof ArrowEntity || entity instanceof WeaponProjectile) {
+            if (!worldIn.isClientSide) {
                 entity.remove(false);
                 worldIn.explode(null, pos.getX(), pos.getY(), pos.getZ(), 3.0F, Explosion.Mode.DESTROY);
             }
