@@ -29,7 +29,7 @@ displayName="ScrapCraft" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="scrapcraft_logo.png"
 credits="Made by MultiTeam"
-authors="LazTheArtist [Code - Art]; Scrappy412 [Arts]"
+authors="LazTheArtist [Code - Art]; Scrappy412 [Arts]; Qboi [Code]"
 itemIcon="scrapcraft:spud_gun"
 description='''
 This mod will bring some if not all features from the game called Scrap Mechanic!
