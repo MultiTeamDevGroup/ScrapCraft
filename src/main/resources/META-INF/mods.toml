@@ -27,7 +27,8 @@ displayName="ScrapCraft" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="scrapcraft_logo.png"
+logoFile="ScrapCraft.png"
+logoBlur=false
 credits="Made by MultiTeam"
 authors="LazTheArtist [Code - Art]; Scrappy412 [Arts]; Qboi [Code]"
 itemIcon="scrapcraft:spud_gun"
