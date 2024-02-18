@@ -54,6 +54,12 @@ description='''${mod_description}'''
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT, or SERVER
     side="BOTH"
+[[dependencies.${mod_id}]] #optional
+    modId="geckolib" #mandatory
+    mandatory=true #mandatory
+    versionRange="[4.4.2,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
 # Here's another dependency
 [[dependencies.${mod_id}]]
     modId="minecraft"
