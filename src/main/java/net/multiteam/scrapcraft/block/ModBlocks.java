@@ -19,9 +19,9 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ScrapCraft.MODID);
 
-    public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    //public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
-    public static final RegistryObject<Block> COOKBOT_BLOCK = registerBlock("cookbot_block", () -> new CookbotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noCollission()));
+    public static final RegistryObject<Block> COOKBOT_BLOCK = registerBlock("cookbot_block", () -> new CookbotBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
