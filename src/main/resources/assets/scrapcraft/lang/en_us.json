@@ -1,4 +1,5 @@
 {
   "creativetab.scrapcraft": "ScrapCraft",
-  "block.scrapcraft.cookbot_block": "Cookbot"
+  "block.scrapcraft.cookbot_block": "Cookbot",
+  "gui.cookbot.title": "C O O K B O T"
 }

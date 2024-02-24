@@ -2,6 +2,7 @@ package net.multiteam.scrapcraft;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -21,6 +22,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.multiteam.scrapcraft.block.ModBlocks;
 import net.multiteam.scrapcraft.block.entity.ModBlockEntities;
 import net.multiteam.scrapcraft.block.entity.client.CookbotRenderer;
+import net.multiteam.scrapcraft.gui.CookbotScreen;
+import net.multiteam.scrapcraft.gui.ModMenuTypes;
 import net.multiteam.scrapcraft.item.ModItems;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
@@ -39,6 +42,7 @@ public class ScrapCraft {
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         GeckoLib.initialize();
 
@@ -82,12 +86,8 @@ public class ScrapCraft {
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-
+        public static void onClientSetup(FMLClientSetupEvent event){
+            MenuScreens.register(ModMenuTypes.COOKBOT_MENU.get(), CookbotScreen::new);
             BlockEntityRenderers.register(ModBlockEntities.COOKBOT_BLOCK_ENTITY.get(), CookbotRenderer::new);
         }
     }
