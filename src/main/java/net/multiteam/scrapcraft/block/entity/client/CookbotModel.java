@@ -21,4 +21,5 @@ public class CookbotModel extends GeoModel<CookbotBlockEntity> {
     public ResourceLocation getAnimationResource(CookbotBlockEntity animatable) {
         return new ResourceLocation(ScrapCraft.MODID, "animations/cookbot_block.animation.json");
     }
+
 }

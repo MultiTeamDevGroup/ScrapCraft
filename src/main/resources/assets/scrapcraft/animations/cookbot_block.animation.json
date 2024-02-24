@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation.cookbot.idle_1": {
+		"animation.cookbot.idle_look_at_spoon": {
 			"animation_length": 6.96,
 			"bones": {
 				"arm": {
@@ -106,7 +106,7 @@
 				}
 			}
 		},
-		"animation.cookbot.idle_2": {
+		"animation.cookbot.idle_head_hitting": {
 			"animation_length": 8.32,
 			"bones": {
 				"arm": {
@@ -434,7 +434,7 @@
 				}
 			}
 		},
-		"animation.cookbot.idle_3": {
+		"animation.cookbot.idle_spoon_sharpen": {
 			"animation_length": 10.08,
 			"bones": {
 				"arm": {
