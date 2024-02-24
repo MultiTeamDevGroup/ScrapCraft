@@ -14,6 +14,10 @@ import org.joml.Vector4i;
 
 public class CookbotScreen extends AbstractContainerScreen<CookbotMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ScrapCraft.MODID, "textures/gui/cookbot_gui.png");
+    private static final Vector2i TEXTURE_SIZE = new Vector2i(512, 512);
+    private static final Vector2i SCREEN_SIZE = new Vector2i(320, 298);
+
+    private static final int COLOR_WHITE = 16777215;
 
     public CookbotScreen(CookbotMenu menu, Inventory playerInventory, Component titelComponent) {
         super(menu, playerInventory, titelComponent);
@@ -23,8 +27,8 @@ public class CookbotScreen extends AbstractContainerScreen<CookbotMenu> {
     protected void init() {
         super.init();
 
-        this.imageWidth = 512;
-        this.imageHeight = 512;
+        this.imageWidth = TEXTURE_SIZE.x;
+        this.imageHeight = TEXTURE_SIZE.y;
 
         int nowhere = 971234876;
         this.inventoryLabelX = nowhere;
@@ -41,13 +45,13 @@ public class CookbotScreen extends AbstractContainerScreen<CookbotMenu> {
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, TEXTURE);
 
-        Vector2i pivot = new Vector2i((width/2) - (320/2), (height/2) - (298/2));
+        Vector2i pivot = new Vector2i((width/2) - (SCREEN_SIZE.x/2), (height/2) - (SCREEN_SIZE.y/2));
 
         //320 x 298
 
-        renderTexturedPanel(guiGraphics, TEXTURE, pivot.x, pivot.y, new Vector4i(0, 0, 320, 298), new Vector2i(512, 512));
+        renderTexturedPanel(guiGraphics, TEXTURE, pivot.x, pivot.y, new Vector4i(0, 0, SCREEN_SIZE.x, SCREEN_SIZE.y), TEXTURE_SIZE);
 
-        guiGraphics.drawString(this.font, Component.translatable("gui.cookbot.title"), pivot.x+68, pivot.y+60, 16777215, false);
+        guiGraphics.drawString(this.font, Component.translatable("gui.cookbot.title"), pivot.x+68, pivot.y+60, COLOR_WHITE, true);
     }
 
     private void renderTexturedPanel(GuiGraphics guiGraphics,ResourceLocation texture, int pivotX, int pivotY, Vector4i area, Vector2i textureSize){
